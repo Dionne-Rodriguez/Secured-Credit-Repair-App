@@ -11,6 +11,8 @@
 		644419EC2751F56700EA1466 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644419EB2751F56700EA1466 /* ContentView.swift */; };
 		644419EE2751F56800EA1466 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 644419ED2751F56800EA1466 /* Assets.xcassets */; };
 		644419F12751F56800EA1466 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 644419F02751F56800EA1466 /* Preview Assets.xcassets */; };
+		644419F82752067600EA1466 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644419F72752067600EA1466 /* MenuView.swift */; };
+		644419FA2752AFB900EA1466 /* AppointmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644419F92752AFB900EA1466 /* AppointmentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		644419EB2751F56700EA1466 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		644419ED2751F56800EA1466 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		644419F02751F56800EA1466 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		644419F72752067600EA1466 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		644419F92752AFB900EA1466 /* AppointmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +59,8 @@
 				644419EB2751F56700EA1466 /* ContentView.swift */,
 				644419ED2751F56800EA1466 /* Assets.xcassets */,
 				644419EF2751F56800EA1466 /* Preview Content */,
+				644419F72752067600EA1466 /* MenuView.swift */,
+				644419F92752AFB900EA1466 /* AppointmentView.swift */,
 			);
 			path = "Secured Credit Repair";
 			sourceTree = "<group>";
@@ -138,6 +144,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				644419EC2751F56700EA1466 /* ContentView.swift in Sources */,
+				644419F82752067600EA1466 /* MenuView.swift in Sources */,
+				644419FA2752AFB900EA1466 /* AppointmentView.swift in Sources */,
 				644419EA2751F56700EA1466 /* Secured_Credit_RepairApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
