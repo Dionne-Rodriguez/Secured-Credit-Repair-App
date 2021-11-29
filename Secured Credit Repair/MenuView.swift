@@ -9,7 +9,8 @@ import SwiftUI
 
 struct MenuView: View {
     
-    @State var isMenuItemTapped = false
+    @State var isBookAppointmentItemTapped = false
+    @State var isApplyLoanApplicationItemTapped = false
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -30,11 +31,27 @@ struct MenuView: View {
                     .foregroundColor(.gray)
                     .font(.headline)
                     .onTapGesture {
-                        isMenuItemTapped.toggle()
+                        isBookAppointmentItemTapped.toggle()
                     }
                 NavigationLink("",
                                destination:AppointmentsView(),
-                isActive: $isMenuItemTapped)
+                isActive: $isBookAppointmentItemTapped)
+                .navigationTitle("Home")
+            }
+            .padding(.top, 30)
+            HStack {
+                Image(systemName: "dollarsign.circle")
+                    .foregroundColor(.gray)
+                    .imageScale(.large)
+                Text("Apply for a loan")
+                    .foregroundColor(.gray)
+                    .font(.headline)
+                    .onTapGesture {
+                        isApplyLoanApplicationItemTapped.toggle()
+                    }
+                NavigationLink("",
+                               destination:LoanApplicationView(),
+                isActive: $isApplyLoanApplicationItemTapped)
                 .navigationTitle("Home")
             }
             .padding(.top, 30)

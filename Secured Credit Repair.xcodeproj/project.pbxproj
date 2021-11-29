@@ -13,6 +13,8 @@
 		644419F12751F56800EA1466 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 644419F02751F56800EA1466 /* Preview Assets.xcassets */; };
 		644419F82752067600EA1466 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644419F72752067600EA1466 /* MenuView.swift */; };
 		644419FA2752AFB900EA1466 /* AppointmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644419F92752AFB900EA1466 /* AppointmentView.swift */; };
+		644419FE2753054D00EA1466 /* LoanApplicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644419FD2753054D00EA1466 /* LoanApplicationView.swift */; };
+		64441A012753EFC000EA1466 /* iPhoneNumberField in Frameworks */ = {isa = PBXBuildFile; productRef = 64441A002753EFC000EA1466 /* iPhoneNumberField */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +25,7 @@
 		644419F02751F56800EA1466 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		644419F72752067600EA1466 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		644419F92752AFB900EA1466 /* AppointmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentView.swift; sourceTree = "<group>"; };
+		644419FD2753054D00EA1466 /* LoanApplicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanApplicationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64441A012753EFC000EA1466 /* iPhoneNumberField in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +65,7 @@
 				644419EF2751F56800EA1466 /* Preview Content */,
 				644419F72752067600EA1466 /* MenuView.swift */,
 				644419F92752AFB900EA1466 /* AppointmentView.swift */,
+				644419FD2753054D00EA1466 /* LoanApplicationView.swift */,
 			);
 			path = "Secured Credit Repair";
 			sourceTree = "<group>";
@@ -89,6 +94,9 @@
 			dependencies = (
 			);
 			name = "Secured Credit Repair";
+			packageProductDependencies = (
+				64441A002753EFC000EA1466 /* iPhoneNumberField */,
+			);
 			productName = "Secured Credit Repair";
 			productReference = 644419E62751F56700EA1466 /* Secured Credit Repair.app */;
 			productType = "com.apple.product-type.application";
@@ -117,6 +125,9 @@
 				Base,
 			);
 			mainGroup = 644419DD2751F56700EA1466;
+			packageReferences = (
+				644419FF2753EFC000EA1466 /* XCRemoteSwiftPackageReference "iPhoneNumberField" */,
+			);
 			productRefGroup = 644419E72751F56700EA1466 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -147,6 +158,7 @@
 				644419F82752067600EA1466 /* MenuView.swift in Sources */,
 				644419FA2752AFB900EA1466 /* AppointmentView.swift in Sources */,
 				644419EA2751F56700EA1466 /* Secured_Credit_RepairApp.swift in Sources */,
+				644419FE2753054D00EA1466 /* LoanApplicationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,6 +361,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		644419FF2753EFC000EA1466 /* XCRemoteSwiftPackageReference "iPhoneNumberField" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MojtabaHs/iPhoneNumberField.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.6.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		64441A002753EFC000EA1466 /* iPhoneNumberField */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 644419FF2753EFC000EA1466 /* XCRemoteSwiftPackageReference "iPhoneNumberField" */;
+			productName = iPhoneNumberField;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 644419DE2751F56700EA1466 /* Project object */;
 }
