@@ -50,6 +50,7 @@ struct ContentView: View {
                         .imageScale(.large)
                 }))
         }
+        .navigationBarHidden(true)
     }
 }
 
