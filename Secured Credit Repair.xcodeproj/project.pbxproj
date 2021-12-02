@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6405C7012757284B0025CE26 /* LoanApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6405C7002757284B0025CE26 /* LoanApplication.swift */; };
 		644419EA2751F56700EA1466 /* Secured_Credit_RepairApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644419E92751F56700EA1466 /* Secured_Credit_RepairApp.swift */; };
 		644419EC2751F56700EA1466 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644419EB2751F56700EA1466 /* ContentView.swift */; };
 		644419EE2751F56800EA1466 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 644419ED2751F56800EA1466 /* Assets.xcassets */; };
@@ -15,9 +16,11 @@
 		644419FA2752AFB900EA1466 /* AppointmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644419F92752AFB900EA1466 /* AppointmentView.swift */; };
 		644419FE2753054D00EA1466 /* LoanApplicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644419FD2753054D00EA1466 /* LoanApplicationView.swift */; };
 		64441A012753EFC000EA1466 /* iPhoneNumberField in Frameworks */ = {isa = PBXBuildFile; productRef = 64441A002753EFC000EA1466 /* iPhoneNumberField */; };
+		64C4858E27586D4A00CBE94B /* LoanAppVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C4858D27586D4A00CBE94B /* LoanAppVM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6405C7002757284B0025CE26 /* LoanApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanApplication.swift; sourceTree = "<group>"; };
 		644419E62751F56700EA1466 /* Secured Credit Repair.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Secured Credit Repair.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		644419E92751F56700EA1466 /* Secured_Credit_RepairApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secured_Credit_RepairApp.swift; sourceTree = "<group>"; };
 		644419EB2751F56700EA1466 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -26,6 +29,7 @@
 		644419F72752067600EA1466 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		644419F92752AFB900EA1466 /* AppointmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentView.swift; sourceTree = "<group>"; };
 		644419FD2753054D00EA1466 /* LoanApplicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanApplicationView.swift; sourceTree = "<group>"; };
+		64C4858D27586D4A00CBE94B /* LoanAppVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanAppVM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +44,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6405C6FD275727A00025CE26 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				644419FD2753054D00EA1466 /* LoanApplicationView.swift */,
+				644419F92752AFB900EA1466 /* AppointmentView.swift */,
+				644419F72752067600EA1466 /* MenuView.swift */,
+				644419EB2751F56700EA1466 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6405C6FE275727AC0025CE26 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				64C4858D27586D4A00CBE94B /* LoanAppVM.swift */,
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
+		6405C6FF275727C20025CE26 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6405C7002757284B0025CE26 /* LoanApplication.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		644419DD2751F56700EA1466 = {
 			isa = PBXGroup;
 			children = (
@@ -59,13 +90,12 @@
 		644419E82751F56700EA1466 /* Secured Credit Repair */ = {
 			isa = PBXGroup;
 			children = (
+				6405C6FF275727C20025CE26 /* Models */,
+				6405C6FE275727AC0025CE26 /* View Models */,
+				6405C6FD275727A00025CE26 /* Views */,
 				644419E92751F56700EA1466 /* Secured_Credit_RepairApp.swift */,
-				644419EB2751F56700EA1466 /* ContentView.swift */,
 				644419ED2751F56800EA1466 /* Assets.xcassets */,
 				644419EF2751F56800EA1466 /* Preview Content */,
-				644419F72752067600EA1466 /* MenuView.swift */,
-				644419F92752AFB900EA1466 /* AppointmentView.swift */,
-				644419FD2753054D00EA1466 /* LoanApplicationView.swift */,
 			);
 			path = "Secured Credit Repair";
 			sourceTree = "<group>";
@@ -156,7 +186,9 @@
 			files = (
 				644419EC2751F56700EA1466 /* ContentView.swift in Sources */,
 				644419F82752067600EA1466 /* MenuView.swift in Sources */,
+				6405C7012757284B0025CE26 /* LoanApplication.swift in Sources */,
 				644419FA2752AFB900EA1466 /* AppointmentView.swift in Sources */,
+				64C4858E27586D4A00CBE94B /* LoanAppVM.swift in Sources */,
 				644419EA2751F56700EA1466 /* Secured_Credit_RepairApp.swift in Sources */,
 				644419FE2753054D00EA1466 /* LoanApplicationView.swift in Sources */,
 			);

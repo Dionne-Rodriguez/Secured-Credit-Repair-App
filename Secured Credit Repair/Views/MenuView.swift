@@ -9,6 +9,8 @@ import SwiftUI
 
 struct MenuView: View {
     
+    @StateObject var loanApplicationService = LoanApplicationService()
+    
     @State var isBookAppointmentItemTapped = false
     @State var isApplyLoanApplicationItemTapped = false
     
@@ -50,7 +52,7 @@ struct MenuView: View {
                         isApplyLoanApplicationItemTapped.toggle()
                     }
                 NavigationLink("",
-                               destination:LoanApplicationView(),
+                               destination:LoanApplicationView(loanApplicationService: loanApplicationService),
                 isActive: $isApplyLoanApplicationItemTapped)
                 .navigationTitle("Home")
             }

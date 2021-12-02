@@ -8,8 +8,13 @@
 import SwiftUI
 import iPhoneNumberField
 
+ 
+
 
 struct LoanApplicationView: View {
+    
+    @ObservedObject var loanApplicationService: LoanApplicationService
+    
     
     @State private var speed: Double = 0
     @State private var isEditing = false
@@ -20,8 +25,11 @@ struct LoanApplicationView: View {
         
         let total = Double(speed)
         
+
+        
         return numberFormatter.string(from: NSNumber(value: total)) ?? "$0"
     }
+  
     
     var body: some View {
         VStack {
@@ -44,11 +52,16 @@ struct LoanApplicationView: View {
             )
                 .padding(.horizontal)
             
+            
             Text(totalLoanAmount)
             
-            NavigationLink(destination: ContactInfo()) {
+            
+            NavigationLink(destination: ContactInfo(loanApplicationService: loanApplicationService)) {
                 Text("Next")
-            }
+            }.simultaneousGesture(TapGesture().onEnded{
+                loanApplicationService.loanApplicationForm.requestLoanAmount = totalLoanAmount
+                print(loanApplicationService.loanApplicationForm)
+            })
             .buttonStyle(.borderedProminent)
             .frame(width: 350, alignment: .trailing)
             Spacer()
@@ -58,11 +71,8 @@ struct LoanApplicationView: View {
 
 
 struct ContactInfo: View {
-    @State var firstName: String = ""
-    @State var lastName: String = ""
-    @State var phoneNumber: String = ""
-    @State var SSN: String = ""
-    @State var DOB = Date()
+    
+    @ObservedObject var loanApplicationService: LoanApplicationService
     
     var body: some View {
         VStack {
@@ -72,20 +82,23 @@ struct ContactInfo: View {
             Spacer()
             Form {
                 Section(header: Text("")) {
-                    TextField("First name", text: $firstName)
+                    TextField("First name", text: $loanApplicationService.loanApplicationForm.firstName)
                         .padding(.vertical)
-                    TextField("Last name", text: $lastName)
+                    TextField("Last name", text: $loanApplicationService.loanApplicationForm.lastName)
                         .padding(.vertical)
                     DatePicker(
                         "Date of Birth",
-                        selection: $DOB,
+                        selection: $loanApplicationService.loanApplicationForm.DOB,
                         displayedComponents: [.date]
                     )
                         .padding(.vertical)
-                    TextField("Social Security Number", text: $SSN)
+                    TextField("Social Security Number", text: $loanApplicationService.loanApplicationForm.SSN)
                         .padding(.vertical)
-                    iPhoneNumberField(text: $phoneNumber)
+                    iPhoneNumberField(text: $loanApplicationService.loanApplicationForm.phoneNumber)
                         .padding(.vertical)
+                    Button("Tap here"){
+                        print(loanApplicationService.loanApplicationForm)
+                    }
                 }
                 
                 NavigationLink(destination: LoanDetailQuestions()) {
@@ -95,7 +108,7 @@ struct ContactInfo: View {
                             .foregroundColor(.blue)
                         Spacer()
                     }
-
+                    
                 }
             }
         }
@@ -117,7 +130,7 @@ struct LoanDetailQuestions: View {
     
     @State private var didTapYesNewCreditLines:Bool = false
     @State private var didTapNoNewCreditLines:Bool = false
-
+    
     @State private var didTapYesBankruptcy:Bool = false
     @State private var didTapNoBankruptcy:Bool = false
     
@@ -127,6 +140,7 @@ struct LoanDetailQuestions: View {
     @State private var didTapYesCreditCardBalance:Bool = false
     @State private var didTapNoCreditCardBalance:Bool = false
     
+    @State private var showFullScreen = false
     @State private var showAlert = false
     @State private var goHome = false
     
@@ -146,9 +160,9 @@ struct LoanDetailQuestions: View {
                         
                         ZStack{
                             
-                       
-                        NavigationLink(destination: ContentView(), isActive: self.$goHome)
-                        { EmptyView() }
+                            
+                            NavigationLink(destination: ContentView(), isActive: self.$goHome)
+                            { EmptyView() }
                         }.hidden()
                         
                         Button("Yes") {
@@ -162,26 +176,19 @@ struct LoanDetailQuestions: View {
                         .background(didTapYesUSCitizen ? Color.blue : nil)
                         .foregroundColor(didTapYesUSCitizen ? Color.white : nil)
                         
-                            Button("No") {
-                                if(self.didTapYesUSCitizen){
-                                    self.didTapYesUSCitizen = false
-                                }
-                                self.didTapNoUSCitizen.toggle()
-                                showAlert = true
+                        Button("No") {
+                            if(self.didTapYesUSCitizen){
+                                self.didTapYesUSCitizen = false
                             }
+                            self.didTapNoUSCitizen.toggle()
+                        }
                         
                         .buttonStyle(.bordered)
                         .background(didTapNoUSCitizen ? Color.blue : nil)
                         .foregroundColor(didTapNoUSCitizen ? Color.white : nil)
-                        .alert("You are unfortunately not eligible", isPresented: $showAlert) {
-                                    Button("OK", role: .cancel) {
-                                        showAlert = false
-                                        goHome = true
-                                    }
-                                }
                     }
                     .padding(.vertical)
-
+                    
                     HStack {
                         Text("Is your Credit Score 660 or Higher?")
                         
@@ -207,13 +214,7 @@ struct LoanDetailQuestions: View {
                         .buttonStyle(.bordered)
                         .background(didTapNoCreditScore ? Color.blue : nil)
                         .foregroundColor(didTapNoCreditScore ? Color.white : nil)
-                        .alert("You are unfortunately not eligible", isPresented: $showAlert) {
-                                    Button("OK", role: .cancel) {
-                                        showAlert = false
-                                        goHome = true
-                                    }
-                                }
-                 
+                        
                     }
                     .padding(.vertical)
                     
@@ -223,9 +224,9 @@ struct LoanDetailQuestions: View {
                         Spacer()
                         
                         ZStack {
-
-                        NavigationLink(destination: ContentView(), isActive: self.$goHome)
-                        { EmptyView() }
+                            
+                            NavigationLink(destination: ContentView(), isActive: self.$goHome)
+                            { EmptyView() }
                         }.hidden()
                         
                         Button("Yes") {
@@ -244,12 +245,13 @@ struct LoanDetailQuestions: View {
                                 self.didTapYesAnnualIncome = false
                             }
                             self.didTapNoAnnualIncome.toggle()
-                            showAlert = true
+                            showFullScreen = true
                         }
                         .buttonStyle(.bordered)
                         .background(didTapNoAnnualIncome ? Color.blue : nil)
                         .foregroundColor(didTapNoAnnualIncome ? Color.white : nil)
-                 
+                        
+                        
                     }
                     .padding(.vertical)
                     
@@ -278,7 +280,7 @@ struct LoanDetailQuestions: View {
                         .buttonStyle(.bordered)
                         .background(didTapNoInquiries ? Color.blue : nil)
                         .foregroundColor(didTapNoInquiries ? Color.white : nil)
-                 
+                        
                     }
                     .padding(.vertical)
                     
@@ -307,7 +309,7 @@ struct LoanDetailQuestions: View {
                         .buttonStyle(.bordered)
                         .background(didTapNoNewCreditLines ? Color.blue : nil)
                         .foregroundColor(didTapNoNewCreditLines ? Color.white : nil)
-                 
+                        
                     }
                     .padding(.vertical)
                     
@@ -336,7 +338,7 @@ struct LoanDetailQuestions: View {
                         .buttonStyle(.bordered)
                         .background(didTapNoBankruptcy ? Color.blue : nil)
                         .foregroundColor(didTapNoBankruptcy ? Color.white : nil)
-                 
+                        
                     }
                     .padding(.vertical)
                     
@@ -365,7 +367,7 @@ struct LoanDetailQuestions: View {
                         .buttonStyle(.bordered)
                         .background(didTapNoDerogatoryReport ? Color.blue : nil)
                         .foregroundColor(didTapNoDerogatoryReport ? Color.white : nil)
-                 
+                        
                     }
                     .padding(.vertical)
                     
@@ -394,7 +396,7 @@ struct LoanDetailQuestions: View {
                         .buttonStyle(.bordered)
                         .background(didTapNoCreditCardBalance ? Color.blue : nil)
                         .foregroundColor(didTapNoCreditCardBalance ? Color.white : nil)
-                 
+                        
                     }
                     .padding(.vertical)
                     
@@ -408,7 +410,7 @@ struct LoanDetailQuestions: View {
                             .foregroundColor(.blue)
                         Spacer()
                     }
-
+                    
                 }
             }
         }
@@ -422,6 +424,8 @@ struct LoanApplicationView_Previews: PreviewProvider {
         LoanDetailQuestions()
     }
 }
+
+
 
 
 
