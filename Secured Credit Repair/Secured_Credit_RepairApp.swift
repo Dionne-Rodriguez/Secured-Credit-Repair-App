@@ -11,7 +11,7 @@ import SwiftUI
 struct Secured_Credit_RepairApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
         }
     }
 }

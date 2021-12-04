@@ -52,7 +52,7 @@ struct MenuView: View {
                         isApplyLoanApplicationItemTapped.toggle()
                     }
                 NavigationLink("",
-                               destination:LoanApplicationView(loanApplicationService: loanApplicationService),
+                               destination:LoanRequestAmountView(loanApplicationService: loanApplicationService),
                 isActive: $isApplyLoanApplicationItemTapped)
                 .navigationTitle("Home")
             }

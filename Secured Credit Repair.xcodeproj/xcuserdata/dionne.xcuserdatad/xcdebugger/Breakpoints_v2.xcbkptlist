@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "E58BBF9F-59A8-41A3-859C-FBF74C6E8082"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1006CE9B-1C1E-4774-B156-1193F61C72B0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Secured Credit Repair/ContentView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "10"
+            endingLineNumber = "10"
+            landmarkName = "ContentView"
+            landmarkType = "14">
+            <Locations>
+               <Location
+                  uuid = "1006CE9B-1C1E-4774-B156-1193F61C72B0 - 3221daf92991475a"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Secured_Credit_Repair.ContentView.init(showMenu: Swift.Bool) -&gt; Secured_Credit_Repair.ContentView"
+                  moduleName = "Secured Credit Repair"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dionne/Projects/Secured%20Credit%20Repair/Secured%20Credit%20Repair/ContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "8">
+               </Location>
+               <Location
+                  uuid = "1006CE9B-1C1E-4774-B156-1193F61C72B0 - 8f63dddffbc23a64"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Secured_Credit_Repair.ContentView.init() -&gt; Secured_Credit_Repair.ContentView"
+                  moduleName = "Secured Credit Repair"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dionne/Projects/Secured%20Credit%20Repair/Secured%20Credit%20Repair/ContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "40">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

@@ -15,6 +15,21 @@ struct LoanApplication {
     var SSN: String
     var DOB: Date
     
-    //add rest of data for loan app questions
+    var USCitizen: String
+    
+    var CreditScore: String
+    
+    var AnnualIncome: String
+    
+    var Inquiries: String
+    
+    var NewCreditLines: String
+    
+    var Bankruptcy: String
+    
+    var DerogatoryReport: String
+    
+    var CreditCardBalance: String
+    
     
 }
