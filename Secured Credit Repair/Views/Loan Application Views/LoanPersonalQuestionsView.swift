@@ -12,6 +12,7 @@ struct LoanPersonalQuestionsView: View {
     @State private var showFullScreen = false
     
     
+    
     var body: some View {
         VStack {
             Text("Personal Information")
@@ -30,6 +31,12 @@ struct LoanPersonalQuestionsView: View {
                         }
                         .pickerStyle(SegmentedPickerStyle())
                         .frame(width: 120, height: 0)
+                        .onReceive([self.$loanApplicationService.loanApplicationForm.USCitizen].publisher) { value in
+                            self.presentIneligibleSheet()
+                         }
+                        .fullScreenCover(isPresented: $showFullScreen, content:{
+                            InEligibleLoanApplication()
+                        })
                     }
                     .padding(.vertical)
                     
@@ -44,7 +51,6 @@ struct LoanPersonalQuestionsView: View {
                         }
                         .pickerStyle(SegmentedPickerStyle())
                         .frame(width: 120, height: 0)
-                        .fullScreenCover(isPresented: $loanApplicationService.presentNotEligibleScreen, content: InEligibleLoanApplication.init)
                     }
                     .padding(.vertical)
                    
@@ -60,6 +66,12 @@ struct LoanPersonalQuestionsView: View {
                         }
                         .pickerStyle(SegmentedPickerStyle())
                         .frame(width: 120, height: 0)
+                        .onReceive([self.$loanApplicationService.loanApplicationForm.AnnualIncome].publisher) { value in
+                            self.presentIneligibleSheet()
+                         }
+                        .fullScreenCover(isPresented: $showFullScreen, content:{
+                            InEligibleLoanApplication()
+                        })
                     }
                     .padding(.vertical)
                     
@@ -152,6 +164,14 @@ struct LoanPersonalQuestionsView: View {
             }
         }
     }
+    func presentIneligibleSheet() {
+        if(loanApplicationService.loanApplicationForm.USCitizen == "No" || loanApplicationService.loanApplicationForm.AnnualIncome == "No") {
+            self.showFullScreen = true
+        } else {
+             
+        }
+    }
+    
 }
 
 struct LoanPersonalQuestionsView_Previews: PreviewProvider {
