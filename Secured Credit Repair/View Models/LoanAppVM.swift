@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import FirebaseStorage
+
 
 class LoanApplicationService: ObservableObject {
     
@@ -14,6 +16,9 @@ class LoanApplicationService: ObservableObject {
                                                                            NewCreditLines: "",Bankruptcy: "",
                                                                            DerogatoryReport: "",
                                                                            CreditCardBalance:"" )
+    
+  
+    
 
     
     var disableLoanAmountBtn:Bool {
@@ -23,6 +28,19 @@ class LoanApplicationService: ObservableObject {
     var disablePersonalInformationNextBtn:Bool {
         return loanApplicationForm.firstName.isEmpty || loanApplicationForm.lastName.isEmpty || loanApplicationForm.SSN.isEmpty || loanApplicationForm.phoneNumber.isEmpty
     }
+    
+    func uploadFile(file:URL,fileName:String) {
+        let storage = Storage.storage()
+        storage.reference().child("docs/\(fileName)").putFile(from: file, metadata: nil) {_ , error in
+            storage.reference().child("Docs").downloadURL { (url,error) in
+                guard let downloandUrl = url else {
+                    return
+                }
+                print(downloandUrl)
+            }
+        }
+    }
+
     
     init() {
         

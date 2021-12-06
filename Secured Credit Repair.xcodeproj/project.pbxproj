@@ -15,6 +15,12 @@
 		644419F82752067600EA1466 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644419F72752067600EA1466 /* MenuView.swift */; };
 		644419FA2752AFB900EA1466 /* AppointmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644419F92752AFB900EA1466 /* AppointmentView.swift */; };
 		64441A012753EFC000EA1466 /* iPhoneNumberField in Frameworks */ = {isa = PBXBuildFile; productRef = 64441A002753EFC000EA1466 /* iPhoneNumberField */; };
+		644C87DD275C1F2200B47FC2 /* LoanDocuments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644C87DC275C1F2200B47FC2 /* LoanDocuments.swift */; };
+		644C87ED275D957700B47FC2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 644C87EC275D957700B47FC2 /* GoogleService-Info.plist */; };
+		644C87F0275D99CA00B47FC2 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 644C87EF275D99CA00B47FC2 /* FirebaseFirestore */; };
+		644C87F2275D99CA00B47FC2 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 644C87F1275D99CA00B47FC2 /* FirebaseStorage */; };
+		644C87F4275D99CA00B47FC2 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 644C87F3275D99CA00B47FC2 /* FirebaseStorageCombine-Community */; };
+		644C87F6275D99CA00B47FC2 /* FirebaseStorageSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 644C87F5275D99CA00B47FC2 /* FirebaseStorageSwift-Beta */; };
 		649B4B53275AF66200CAEC2F /* InEligibleLoanApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B4B52275AF66200CAEC2F /* InEligibleLoanApplication.swift */; };
 		64C4858E27586D4A00CBE94B /* LoanAppVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C4858D27586D4A00CBE94B /* LoanAppVM.swift */; };
 		64C485922759ABBD00CBE94B /* LoanRequestAmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C485912759ABBD00CBE94B /* LoanRequestAmountView.swift */; };
@@ -32,6 +38,8 @@
 		644419F02751F56800EA1466 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		644419F72752067600EA1466 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		644419F92752AFB900EA1466 /* AppointmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentView.swift; sourceTree = "<group>"; };
+		644C87DC275C1F2200B47FC2 /* LoanDocuments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanDocuments.swift; sourceTree = "<group>"; };
+		644C87EC275D957700B47FC2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		649B4B52275AF66200CAEC2F /* InEligibleLoanApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InEligibleLoanApplication.swift; sourceTree = "<group>"; };
 		64C4858D27586D4A00CBE94B /* LoanAppVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanAppVM.swift; sourceTree = "<group>"; };
 		64C485912759ABBD00CBE94B /* LoanRequestAmountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanRequestAmountView.swift; sourceTree = "<group>"; };
@@ -45,7 +53,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				644C87F6275D99CA00B47FC2 /* FirebaseStorageSwift-Beta in Frameworks */,
 				64441A012753EFC000EA1466 /* iPhoneNumberField in Frameworks */,
+				644C87F0275D99CA00B47FC2 /* FirebaseFirestore in Frameworks */,
+				644C87F4275D99CA00B47FC2 /* FirebaseStorageCombine-Community in Frameworks */,
+				644C87F2275D99CA00B47FC2 /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				6405C7002757284B0025CE26 /* LoanApplication.swift */,
+				644C87DC275C1F2200B47FC2 /* LoanDocuments.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -98,6 +111,7 @@
 		644419E82751F56700EA1466 /* Secured Credit Repair */ = {
 			isa = PBXGroup;
 			children = (
+				644C87EC275D957700B47FC2 /* GoogleService-Info.plist */,
 				6405C6FF275727C20025CE26 /* Models */,
 				6405C6FE275727AC0025CE26 /* View Models */,
 				6405C6FD275727A00025CE26 /* Views */,
@@ -146,6 +160,10 @@
 			name = "Secured Credit Repair";
 			packageProductDependencies = (
 				64441A002753EFC000EA1466 /* iPhoneNumberField */,
+				644C87EF275D99CA00B47FC2 /* FirebaseFirestore */,
+				644C87F1275D99CA00B47FC2 /* FirebaseStorage */,
+				644C87F3275D99CA00B47FC2 /* FirebaseStorageCombine-Community */,
+				644C87F5275D99CA00B47FC2 /* FirebaseStorageSwift-Beta */,
 			);
 			productName = "Secured Credit Repair";
 			productReference = 644419E62751F56700EA1466 /* Secured Credit Repair.app */;
@@ -177,6 +195,7 @@
 			mainGroup = 644419DD2751F56700EA1466;
 			packageReferences = (
 				644419FF2753EFC000EA1466 /* XCRemoteSwiftPackageReference "iPhoneNumberField" */,
+				644C87EE275D99CA00B47FC2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 644419E72751F56700EA1466 /* Products */;
 			projectDirPath = "";
@@ -194,6 +213,7 @@
 			files = (
 				644419F12751F56800EA1466 /* Preview Assets.xcassets in Resources */,
 				644419EE2751F56800EA1466 /* Assets.xcassets in Resources */,
+				644C87ED275D957700B47FC2 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,6 +234,7 @@
 				64C485982759AEEB00CBE94B /* LoanUploadDocumentsView.swift in Sources */,
 				644419FA2752AFB900EA1466 /* AppointmentView.swift in Sources */,
 				64C4858E27586D4A00CBE94B /* LoanAppVM.swift in Sources */,
+				644C87DD275C1F2200B47FC2 /* LoanDocuments.swift in Sources */,
 				644419EA2751F56700EA1466 /* Secured_Credit_RepairApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -427,6 +448,14 @@
 				minimumVersion = 0.6.1;
 			};
 		};
+		644C87EE275D99CA00B47FC2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -434,6 +463,26 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 644419FF2753EFC000EA1466 /* XCRemoteSwiftPackageReference "iPhoneNumberField" */;
 			productName = iPhoneNumberField;
+		};
+		644C87EF275D99CA00B47FC2 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 644C87EE275D99CA00B47FC2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		644C87F1275D99CA00B47FC2 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 644C87EE275D99CA00B47FC2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		644C87F3275D99CA00B47FC2 /* FirebaseStorageCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 644C87EE275D99CA00B47FC2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseStorageCombine-Community";
+		};
+		644C87F5275D99CA00B47FC2 /* FirebaseStorageSwift-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 644C87EE275D99CA00B47FC2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseStorageSwift-Beta";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
