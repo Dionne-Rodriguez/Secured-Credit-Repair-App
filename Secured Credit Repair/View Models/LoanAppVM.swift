@@ -9,7 +9,6 @@
 import Foundation
 import FirebaseStorage
 
-
 class LoanApplicationService: ObservableObject {
     
     @Published var loanApplicationForm: LoanApplication = LoanApplication( requestLoanAmount:"$0.00", firstName: "", lastName: "", phoneNumber: "", SSN: "", DOB: Date(),USCitizen: "", CreditScore: "", AnnualIncome: "", Inquiries: "",
@@ -30,9 +29,10 @@ class LoanApplicationService: ObservableObject {
     }
     
     func uploadFile(file:URL,fileName:String) {
+        print("file name \(fileName)")
         let storage = Storage.storage()
         storage.reference().child("docs/\(fileName)").putFile(from: file, metadata: nil) {_ , error in
-            storage.reference().child("Docs").downloadURL { (url,error) in
+            storage.reference().child("docs").downloadURL { (url,error) in
                 guard let downloandUrl = url else {
                     return
                 }

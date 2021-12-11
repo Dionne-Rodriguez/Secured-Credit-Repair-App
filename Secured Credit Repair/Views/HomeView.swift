@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import SwiftUINavigationBarColor
+
 
 struct HomeView: View {
     
@@ -50,6 +52,7 @@ struct HomeView: View {
                         .imageScale(.large)
                 }))
         }
+        .navigationTransparentBar(tintColor: .white) // mandatory
         .navigationBarHidden(true)
     }
 }

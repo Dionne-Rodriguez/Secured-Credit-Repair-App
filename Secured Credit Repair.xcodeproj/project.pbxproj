@@ -21,6 +21,7 @@
 		644C87F2275D99CA00B47FC2 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 644C87F1275D99CA00B47FC2 /* FirebaseStorage */; };
 		644C87F4275D99CA00B47FC2 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 644C87F3275D99CA00B47FC2 /* FirebaseStorageCombine-Community */; };
 		644C87F6275D99CA00B47FC2 /* FirebaseStorageSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 644C87F5275D99CA00B47FC2 /* FirebaseStorageSwift-Beta */; };
+		6450365F27645C0C00A38F04 /* SwiftUINavigationBarColor in Frameworks */ = {isa = PBXBuildFile; productRef = 6450365E27645C0C00A38F04 /* SwiftUINavigationBarColor */; };
 		649B4B53275AF66200CAEC2F /* InEligibleLoanApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B4B52275AF66200CAEC2F /* InEligibleLoanApplication.swift */; };
 		64C4858E27586D4A00CBE94B /* LoanAppVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C4858D27586D4A00CBE94B /* LoanAppVM.swift */; };
 		64C485922759ABBD00CBE94B /* LoanRequestAmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C485912759ABBD00CBE94B /* LoanRequestAmountView.swift */; };
@@ -53,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6450365F27645C0C00A38F04 /* SwiftUINavigationBarColor in Frameworks */,
 				644C87F6275D99CA00B47FC2 /* FirebaseStorageSwift-Beta in Frameworks */,
 				64441A012753EFC000EA1466 /* iPhoneNumberField in Frameworks */,
 				644C87F0275D99CA00B47FC2 /* FirebaseFirestore in Frameworks */,
@@ -164,6 +166,7 @@
 				644C87F1275D99CA00B47FC2 /* FirebaseStorage */,
 				644C87F3275D99CA00B47FC2 /* FirebaseStorageCombine-Community */,
 				644C87F5275D99CA00B47FC2 /* FirebaseStorageSwift-Beta */,
+				6450365E27645C0C00A38F04 /* SwiftUINavigationBarColor */,
 			);
 			productName = "Secured Credit Repair";
 			productReference = 644419E62751F56700EA1466 /* Secured Credit Repair.app */;
@@ -196,6 +199,7 @@
 			packageReferences = (
 				644419FF2753EFC000EA1466 /* XCRemoteSwiftPackageReference "iPhoneNumberField" */,
 				644C87EE275D99CA00B47FC2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				6450365D27645C0C00A38F04 /* XCRemoteSwiftPackageReference "SwiftUI-Navigation-Bar-Color" */,
 			);
 			productRefGroup = 644419E72751F56700EA1466 /* Products */;
 			projectDirPath = "";
@@ -456,6 +460,14 @@
 				minimumVersion = 8.0.0;
 			};
 		};
+		6450365D27645C0C00A38F04 /* XCRemoteSwiftPackageReference "SwiftUI-Navigation-Bar-Color" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/haifengkao/SwiftUI-Navigation-Bar-Color";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -483,6 +495,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 644C87EE275D99CA00B47FC2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = "FirebaseStorageSwift-Beta";
+		};
+		6450365E27645C0C00A38F04 /* SwiftUINavigationBarColor */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6450365D27645C0C00A38F04 /* XCRemoteSwiftPackageReference "SwiftUI-Navigation-Bar-Color" */;
+			productName = SwiftUINavigationBarColor;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
