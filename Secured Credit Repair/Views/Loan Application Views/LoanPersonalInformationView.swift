@@ -51,6 +51,6 @@ struct LoanPersonalInformationView: View {
 
 struct LoanPersonalInformationView_Previews: PreviewProvider {
     static var previews: some View {
-        LoanPersonalInformationView(loanApplicationService: LoanApplicationService())
+        LoanPersonalInformationView(loanApplicationService: LoanApplicationService()).preferredColorScheme(.dark)
     }
 }

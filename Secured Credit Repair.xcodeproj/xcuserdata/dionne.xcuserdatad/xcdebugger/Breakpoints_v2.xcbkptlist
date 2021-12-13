@@ -72,7 +72,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "DFCDD8E2-3F13-428C-A5E6-8E0DE212AD6E"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Secured Credit Repair/Views/Loan Application Views/LoanUploadDocumentsView.swift"
@@ -82,6 +82,38 @@
             endingLineNumber = "30"
             landmarkName = "body"
             landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "DFCDD8E2-3F13-428C-A5E6-8E0DE212AD6E - ed4f6caecd94ea10"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Secured_Credit_Repair.LoanUploadDocumentsView.body.getter : some"
+                  moduleName = "Secured Credit Repair"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dionne/Projects/Secured%20Credit%20Repair/Secured%20Credit%20Repair/Views/Loan%20Application%20Views/LoanUploadDocumentsView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "232">
+               </Location>
+               <Location
+                  uuid = "DFCDD8E2-3F13-428C-A5E6-8E0DE212AD6E - e539096c82ceae51"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.VStack&lt;SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.ignoresSafeArea(_: SwiftUI.SafeAreaRegions, edges: SwiftUI.Edge.Set) -&gt; some&gt;&gt;.0, SwiftUI.VStack&lt;SwiftUI.NavigationLink&lt;SwiftUI.VStack&lt;SwiftUI.Text&gt;, Secured_Credit_Repair.HomeView&gt;&gt;)&gt;&gt; in Secured_Credit_Repair.LoanUploadDocumentsView.body.getter : some"
+                  moduleName = "Secured Credit Repair"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dionne/Projects/Secured%20Credit%20Repair/Secured%20Credit%20Repair/Views/Loan%20Application%20Views/LoanUploadDocumentsView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "236">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

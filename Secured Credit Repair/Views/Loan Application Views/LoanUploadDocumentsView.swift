@@ -35,364 +35,130 @@ struct LoanUploadDocumentsView: View {
                         .font(.system(size: 150))
                         .padding(.vertical)
                         .foregroundColor(.white)
-                    
                     Spacer()
-                    
                     Text("You need to Upload the required Documents")
                         .foregroundColor(.white)
                         .font(.title2)
                         .bold()
                         .frame(width: 350)
-                    
                     Spacer()
-                    
                 }
                 .frame(maxWidth: .infinity)
                 .frame(height: 400)
                 .background(Color(red: 68 / 255, green: 159 / 255, blue: 100 / 255))
-
                 .ignoresSafeArea(.container, edges: .top)
                 
-                VStack (alignment: .leading, spacing: 20) {
-                    Section {
-                        HStack{
-                            Text("Upload last years W2 document:")
-                            Text(W2FileName)
-                        }
-                        .padding(.top)
+                NavigationLink(destination: LoanUploadIdentityDocuments()) {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 10, style: .continuous)
+                            .fill(Color.white)
+                            .shadow(radius: 5)
                         HStack {
-                            Button("File Manager") {
-                                W2ImporterBtn = true
+                            Image(systemName: "person.text.rectangle")
+                                .font(.system(size: 30))
+                                .padding(.horizontal)
+                                .foregroundColor(.black)
+                            VStack(alignment: .leading){
+                                Text("Proof of identity")
+                                    .font(.title3)
+                                    .bold()
+                                    .foregroundColor(.black)
+                                    .lineLimit(1)
+                                    .fixedSize()
+                                
+                                
+                                Text("Upload driver's license, social security card...")
+                                    .font(.footnote)
+                                    .foregroundColor(.black)
+                                    .multilineTextAlignment(.leading)
                             }
-                            .buttonStyle(.bordered)
-                            .fileImporter(isPresented: $W2ImporterBtn, allowedContentTypes: [.pdf,.jpeg]) {
-                                result in
-                                if case .success = result {
-                                    do {
-                                        let fileUrl = try result.get()
-                                        W2FileName = fileUrl.lastPathComponent
-                                        loanApplicationService.uploadFile(file: fileUrl, fileName: "W2")
-                                    } catch {
-                                        let nsError = error as NSError
-                                        fatalError("File Import Error \(nsError), \(nsError.userInfo)")
-                                    }
-                                } else {
-                                    print("File Import Failed")
-                                }
-                            }
-                            
-                            Button("Photo Gallery") {
-                                W2ImporterBtn = true
-                            }
-                            .buttonStyle(.bordered)
+                            .padding(.bottom)
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .padding(.trailing)
+                                .font(.system(size: 15))
+                                .foregroundColor(Color(red: 68 / 255, green: 159 / 255, blue: 100 / 255))
                         }
-                        
+                        .frame(maxWidth:.infinity, alignment: .leading)
                     }
-                    Section {
+                    .frame(height: 120)
+                    .padding(.horizontal, 15)
+                    .padding(.vertical, 15)
+                }
+                .navigationTitle("back")
+                NavigationLink(destination: LoanUploadAddressDocuments()) {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 10, style: .continuous)
+                            .fill(Color.white)
+                            .shadow(radius: 5)
                         HStack {
-                            Text("Upload front of Driver's License: ")
-                            Text(frontDLFileName)
-                        }
-                        .padding(.top)
-                        HStack {
-                        Button("File Manager") {
-                            frontDLImporterBtn = true
-                        }
-                        .buttonStyle(.bordered)
-                        .fileImporter(isPresented: $frontDLImporterBtn, allowedContentTypes: [.pdf,.jpeg]) {
-                            result in
-                            if case .success = result {
-                                do {
-                                    let fileUrl = try result.get()
-                                    frontDLFileName = fileUrl.lastPathComponent
-                                    loanApplicationService.uploadFile(file: fileUrl, fileName: "Front DL")
-                                } catch {
-                                    let nsError = error as NSError
-                                    fatalError("File Import Error \(nsError), \(nsError.userInfo)")
-                                }
-                            } else {
-                                print("File Import Failed")
+                            Image(systemName: "house")
+                                .font(.system(size: 30))
+                                .padding(.horizontal)
+                                .foregroundColor(.black)
+                            VStack(alignment: .leading){
+                                Text("Proof of Address")
+                                    .font(.title3)
+                                    .bold()
+                                    .foregroundColor(.black)
+                                    .fixedSize()
+                                
+                                Text("Upload a utility bill, bank statements, electric, cell phone, cable bill...")
+                                    .font(.footnote)
+                                    .foregroundColor(.black)
+                                    .frame(width: 200)
+                                    .multilineTextAlignment(.leading)
                             }
+                            .padding(.bottom)
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .padding(.trailing)
+                                .font(.system(size: 15))
+                                .foregroundColor(Color(red: 68 / 255, green: 159 / 255, blue: 100 / 255))
                         }
-                        Button("Photo Gallery") {
-                            W2ImporterBtn = true
-                        }
-                        .buttonStyle(.bordered)
-                        }
+                        .frame(maxWidth:.infinity, alignment: .leading)
                     }
-                    Section {
-                        HStack{
-                            Text("Upload back of Driver's License: ")
-                            Text(backDLFileName)
-                        }
-                        .padding(.top)
+                    .frame(height: 120)
+                    .padding(.horizontal, 15)
+                    .padding(.vertical, 5)
+                }
+                
+                NavigationLink(destination: LoanUploadIncomeDocuments()) {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 10, style: .continuous)
+                            .fill(Color.white)
+                            .shadow(radius: 5)
                         HStack {
-                        Button("File Manager") {
-                            backDLImporterBtn = true
-                        }
-                        .buttonStyle(.bordered)
-                        .fileImporter(isPresented: $backDLImporterBtn, allowedContentTypes: [.pdf,.jpeg]) {
-                            result in
-                            if case .success = result {
-                                do {
-                                    let fileUrl = try result.get()
-                                    backDLFileName = fileUrl.lastPathComponent
-                                    loanApplicationService.uploadFile(file: fileUrl, fileName: "Back Driver's License")
-                                } catch {
-                                    let nsError = error as NSError
-                                    fatalError("File Import Error \(nsError), \(nsError.userInfo)")
-                                }
-                            } else {
-                                print("File Import Failed")
+                            Image(systemName: "dollarsign.square")
+                                .font(.system(size: 30))
+                                .padding(.horizontal)
+                                .foregroundColor(.black)
+                            VStack(alignment: .leading){
+                                Text("Proof of Income")
+                                    .font(.title3)
+                                    .bold()
+                                    .foregroundColor(.black)
+                                    .fixedSize()
+                                
+                                
+                                Text("Upload W2, paystubs, bank statements")
+                                    .font(.footnote)
+                                    .foregroundColor(.black)
+                                
+                                    .multilineTextAlignment(.leading)
                             }
+                            .padding(.bottom)
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .padding(.trailing)
+                                .font(.system(size: 15))
+                                .foregroundColor(Color(red: 68 / 255, green: 159 / 255, blue: 100 / 255))
                         }
-                        Button("Photo Gallery") {
-                            W2ImporterBtn = true
-                        }
+                        .frame(maxWidth:.infinity, alignment: .leading)
                     }
-                    }
-                    Section {
-                        HStack {
-                            Text("Upload Front of Social Security Card: ")
-                            Text(frontSCFileName)
-                        }
-                        .padding(.top)
-                        HStack {
-                        Button("File Manager") {
-                            frontSCImporterBtn = true
-                        }.buttonStyle(.bordered)
-                            .fileImporter(isPresented: $frontSCImporterBtn, allowedContentTypes: [.pdf,.jpeg]) {
-                                result in
-                                if case .success = result {
-                                    do {
-                                        let fileUrl = try result.get()
-                                        frontSCFileName = fileUrl.lastPathComponent
-                                        loanApplicationService.uploadFile(file: fileUrl, fileName: "Front Social Card")
-                                    } catch {
-                                        let nsError = error as NSError
-                                        fatalError("File Import Error \(nsError), \(nsError.userInfo)")
-                                    }
-                                } else {
-                                    print("File Import Failed")
-                                }
-                            }
-                        Button("Photo Gallery") {
-                            W2ImporterBtn = true
-                        }
-                    }
-                    }
-                    Section {
-                        HStack {
-                            Text("Upload back of Social Security Card:")
-                            Text(backSCFileName)
-                        }
-                        .padding(.top)
-                        HStack {
-                        Button("File Manager") {
-                            backSCImporterBtn = true
-                        }
-                        .buttonStyle(.bordered)
-                        .fileImporter(isPresented: $backSCImporterBtn, allowedContentTypes: [.pdf,.jpeg]) {
-                            result in
-                            if case .success = result {
-                                do {
-                                    let fileUrl = try result.get()
-                                    backSCFileName = fileUrl.lastPathComponent
-                                    loanApplicationService.uploadFile(file: fileUrl, fileName: "Back Social Card")
-                                } catch {
-                                    let nsError = error as NSError
-                                    fatalError("File Import Error \(nsError), \(nsError.userInfo)")
-                                }
-                            } else {
-                                print("File Import Failed")
-                            }
-                        }
-                        Button("Photo Gallery") {
-                            W2ImporterBtn = true
-                        }
-                        }
-                    }
-                    Section {
-                        HStack {
-                            Text("Most recent utility bill - gas, electric, water, cell phone/cable is accepted:")
-                                 
-                            Text(utilityBillFileName)
-                        }
-                        HStack {
-                        Button("File Manager") {
-                            utilityBillImporterBtn = true
-                        }
-                        .buttonStyle(.bordered)
-                        .fileImporter(isPresented: $utilityBillImporterBtn, allowedContentTypes: [.pdf,.jpeg]) {
-                            result in
-                            if case .success = result {
-                                do {
-                                    let fileUrl = try result.get()
-                                    utilityBillFileName = fileUrl.lastPathComponent
-                                    loanApplicationService.uploadFile(file: fileUrl, fileName: "Utility Bill")
-                                } catch {
-                                    let nsError = error as NSError
-                                    fatalError("File Import Error \(nsError), \(nsError.userInfo)")
-                                }
-                            } else {
-                                print("File Import Failed")
-                            }
-                        }
-                            Button("Photo Gallery") {
-                                utilityBillImporterBtn = true
-                            }
-                        }
-                    }
-                    Section {
-                        HStack {
-                            Text("Voided check from personal account (name must be printed on check): ")
-                            Text(voidCheckFileName)
-                        }
-                        HStack {
-                        Button("File Manager") {
-                            voidCheckImporterBtn = true
-                        }
-                        .buttonStyle(.bordered)
-                        .fileImporter(isPresented: $voidCheckImporterBtn, allowedContentTypes: [.pdf,.jpeg]) {
-                            result in
-                            if case .success = result {
-                                do {
-                                    let fileUrl = try result.get()
-                                    voidCheckFileName = fileUrl.lastPathComponent
-                                    loanApplicationService.uploadFile(file: fileUrl, fileName: "Voided Check")
-                                } catch {
-                                    let nsError = error as NSError
-                                    fatalError("File Import Error \(nsError), \(nsError.userInfo)")
-                                }
-                            } else {
-                                print("File Import Failed")
-                            }
-                        }
-                            Button("Photo Gallery") {
-                                voidCheckImporterBtn = true
-                            }
-                        }
-                    }
-                    Section {
-                        HStack {
-                            Text("month one of bank statements")
-                            Text(voidCheckFileName)
-                        }
-                        HStack {
-                        Button("File Manager") {
-                            voidCheckImporterBtn = true
-                        }
-                        .buttonStyle(.bordered)
-                        .fileImporter(isPresented: $voidCheckImporterBtn, allowedContentTypes: [.pdf,.jpeg]) {
-                            result in
-                            if case .success = result {
-                                do {
-                                    let fileUrl = try result.get()
-                                    voidCheckFileName = fileUrl.lastPathComponent
-                                    loanApplicationService.uploadFile(file: fileUrl, fileName: "Voided Check")
-                                } catch {
-                                    let nsError = error as NSError
-                                    fatalError("File Import Error \(nsError), \(nsError.userInfo)")
-                                }
-                            } else {
-                                print("File Import Failed")
-                            }
-                        }
-                            Button("Photo Gallery") {
-                                voidCheckImporterBtn = true
-                            }
-                        }
-                    }
-                    Section {
-                        HStack {
-                            Text("month two of bank statements ")
-                            Text(voidCheckFileName)
-                        }
-                        HStack {
-                        Button("File Manager") {
-                            voidCheckImporterBtn = true
-                        }
-                        .buttonStyle(.bordered)
-                        .fileImporter(isPresented: $voidCheckImporterBtn, allowedContentTypes: [.pdf,.jpeg]) {
-                            result in
-                            if case .success = result {
-                                do {
-                                    let fileUrl = try result.get()
-                                    voidCheckFileName = fileUrl.lastPathComponent
-                                    loanApplicationService.uploadFile(file: fileUrl, fileName: "Voided Check")
-                                } catch {
-                                    let nsError = error as NSError
-                                    fatalError("File Import Error \(nsError), \(nsError.userInfo)")
-                                }
-                            } else {
-                                print("File Import Failed")
-                            }
-                        }
-                            Button("Photo Gallery") {
-                                voidCheckImporterBtn = true
-                            }
-                        }
-                    }
-                    Section {
-                        HStack {
-                            Text("month three of bank statement")
-                            Text(voidCheckFileName)
-                        }
-                        HStack {
-                        Button("File Manager") {
-                            voidCheckImporterBtn = true
-                        }
-                        .buttonStyle(.bordered)
-                        .fileImporter(isPresented: $voidCheckImporterBtn, allowedContentTypes: [.pdf,.jpeg]) {
-                            result in
-                            if case .success = result {
-                                do {
-                                    let fileUrl = try result.get()
-                                    voidCheckFileName = fileUrl.lastPathComponent
-                                    loanApplicationService.uploadFile(file: fileUrl, fileName: "Voided Check")
-                                } catch {
-                                    let nsError = error as NSError
-                                    fatalError("File Import Error \(nsError), \(nsError.userInfo)")
-                                }
-                            } else {
-                                print("File Import Failed")
-                            }
-                        }
-                            Button("Photo Gallery") {
-                                voidCheckImporterBtn = true
-                            }
-                        }
-                    }
-//                    Section {
-////                        HStack {
-////                            Text("One month worth of paystubs")
-////                            Text(voidCheckFileName)
-////                        }
-////                        HStack {
-////                        Button("File Manager") {
-////                            voidCheckImporterBtn = true
-////                        }
-////                        .buttonStyle(.bordered)
-////                        .fileImporter(isPresented: $voidCheckImporterBtn, allowedContentTypes: [.pdf,.jpeg]) {
-////                            result in
-////                            if case .success = result {
-////                                do {
-////                                    let fileUrl = try result.get()
-////                                    voidCheckFileName = fileUrl.lastPathComponent
-////                                    loanApplicationService.uploadFile(file: fileUrl, fileName: "Voided Check")
-////                                } catch {
-////                                    let nsError = error as NSError
-////                                    fatalError("File Import Error \(nsError), \(nsError.userInfo)")
-////                                }
-////                            } else {
-////                                print("File Import Failed")
-////                            }
-////                        }
-////                            Button("Photo Gallery") {
-////                                voidCheckImporterBtn = true
-////                            }
-////                        }
-//                    }
+                    .frame(height: 120)
+                    .padding(.horizontal, 15)
+                    .padding(.top, 15)
                 }
             }
         }

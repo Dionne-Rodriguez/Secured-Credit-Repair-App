@@ -22,6 +22,9 @@
 		644C87F4275D99CA00B47FC2 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 644C87F3275D99CA00B47FC2 /* FirebaseStorageCombine-Community */; };
 		644C87F6275D99CA00B47FC2 /* FirebaseStorageSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 644C87F5275D99CA00B47FC2 /* FirebaseStorageSwift-Beta */; };
 		6450365F27645C0C00A38F04 /* SwiftUINavigationBarColor in Frameworks */ = {isa = PBXBuildFile; productRef = 6450365E27645C0C00A38F04 /* SwiftUINavigationBarColor */; };
+		6491EA802765924900D03351 /* LoanUploadIdentityDocuments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6491EA7F2765924900D03351 /* LoanUploadIdentityDocuments.swift */; };
+		6491EA822766FEB900D03351 /* LoanUploadAddressDocuments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6491EA812766FEB900D03351 /* LoanUploadAddressDocuments.swift */; };
+		6491EA842766FF1100D03351 /* LoanUploadIncomeDocuments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6491EA832766FF1000D03351 /* LoanUploadIncomeDocuments.swift */; };
 		649B4B53275AF66200CAEC2F /* InEligibleLoanApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B4B52275AF66200CAEC2F /* InEligibleLoanApplication.swift */; };
 		64C4858E27586D4A00CBE94B /* LoanAppVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C4858D27586D4A00CBE94B /* LoanAppVM.swift */; };
 		64C485922759ABBD00CBE94B /* LoanRequestAmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C485912759ABBD00CBE94B /* LoanRequestAmountView.swift */; };
@@ -41,6 +44,9 @@
 		644419F92752AFB900EA1466 /* AppointmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentView.swift; sourceTree = "<group>"; };
 		644C87DC275C1F2200B47FC2 /* LoanDocuments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanDocuments.swift; sourceTree = "<group>"; };
 		644C87EC275D957700B47FC2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6491EA7F2765924900D03351 /* LoanUploadIdentityDocuments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanUploadIdentityDocuments.swift; sourceTree = "<group>"; };
+		6491EA812766FEB900D03351 /* LoanUploadAddressDocuments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanUploadAddressDocuments.swift; sourceTree = "<group>"; };
+		6491EA832766FF1000D03351 /* LoanUploadIncomeDocuments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanUploadIncomeDocuments.swift; sourceTree = "<group>"; };
 		649B4B52275AF66200CAEC2F /* InEligibleLoanApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InEligibleLoanApplication.swift; sourceTree = "<group>"; };
 		64C4858D27586D4A00CBE94B /* LoanAppVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanAppVM.swift; sourceTree = "<group>"; };
 		64C485912759ABBD00CBE94B /* LoanRequestAmountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanRequestAmountView.swift; sourceTree = "<group>"; };
@@ -73,6 +79,7 @@
 				644419F92752AFB900EA1466 /* AppointmentView.swift */,
 				644419F72752067600EA1466 /* MenuView.swift */,
 				644419EB2751F56700EA1466 /* HomeView.swift */,
+				644419E92751F56700EA1466 /* Secured_Credit_RepairApp.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -117,7 +124,6 @@
 				6405C6FF275727C20025CE26 /* Models */,
 				6405C6FE275727AC0025CE26 /* View Models */,
 				6405C6FD275727A00025CE26 /* Views */,
-				644419E92751F56700EA1466 /* Secured_Credit_RepairApp.swift */,
 				644419ED2751F56800EA1466 /* Assets.xcassets */,
 				644419EF2751F56800EA1466 /* Preview Content */,
 			);
@@ -140,6 +146,9 @@
 				64C485952759AC2E00CBE94B /* LoanPersonalQuestionsView.swift */,
 				64C485972759AEEB00CBE94B /* LoanUploadDocumentsView.swift */,
 				649B4B52275AF66200CAEC2F /* InEligibleLoanApplication.swift */,
+				6491EA7F2765924900D03351 /* LoanUploadIdentityDocuments.swift */,
+				6491EA812766FEB900D03351 /* LoanUploadAddressDocuments.swift */,
+				6491EA832766FF1000D03351 /* LoanUploadIncomeDocuments.swift */,
 			);
 			path = "Loan Application Views";
 			sourceTree = "<group>";
@@ -231,11 +240,14 @@
 				64C485922759ABBD00CBE94B /* LoanRequestAmountView.swift in Sources */,
 				644419EC2751F56700EA1466 /* HomeView.swift in Sources */,
 				64C485962759AC2E00CBE94B /* LoanPersonalQuestionsView.swift in Sources */,
+				6491EA802765924900D03351 /* LoanUploadIdentityDocuments.swift in Sources */,
+				6491EA822766FEB900D03351 /* LoanUploadAddressDocuments.swift in Sources */,
 				644419F82752067600EA1466 /* MenuView.swift in Sources */,
 				64C485942759ABEC00CBE94B /* LoanPersonalInformationView.swift in Sources */,
 				649B4B53275AF66200CAEC2F /* InEligibleLoanApplication.swift in Sources */,
 				6405C7012757284B0025CE26 /* LoanApplication.swift in Sources */,
 				64C485982759AEEB00CBE94B /* LoanUploadDocumentsView.swift in Sources */,
+				6491EA842766FF1100D03351 /* LoanUploadIncomeDocuments.swift in Sources */,
 				644419FA2752AFB900EA1466 /* AppointmentView.swift in Sources */,
 				64C4858E27586D4A00CBE94B /* LoanAppVM.swift in Sources */,
 				644C87DD275C1F2200B47FC2 /* LoanDocuments.swift in Sources */,
