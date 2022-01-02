@@ -11,6 +11,20 @@ import SwiftUINavigationBarColor
 
 struct HomeView: View {
     
+    init() {
+            // 1.
+        UINavigationBar.appearance().backgroundColor = UIColor(red: 68 / 255, green: 159 / 255, blue: 100 / 255, alpha: 1)
+           
+//            // 2.
+//            UINavigationBar.appearance().largeTitleTextAttributes = [
+//                .foregroundColor: UIColor.darkGray,
+//                .font : UIFont(name:"Papyrus", size: 40)!]
+//                    
+//            // 3.
+//            UINavigationBar.appearance().titleTextAttributes = [
+//                .font : UIFont(name: "HelveticaNeue-Thin", size: 20)!]
+        }
+    
     @State var showMenu = false
     
     var body: some View {

@@ -31,5 +31,5 @@ struct LoanApplication {
     
     var CreditCardBalance: String
     
-    
+    var Documents: LoanDocuments
 }

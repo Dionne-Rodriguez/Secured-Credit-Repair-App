@@ -168,7 +168,7 @@ struct LoanPersonalQuestionsView: View {
         if(loanApplicationService.loanApplicationForm.USCitizen == "No" || loanApplicationService.loanApplicationForm.AnnualIncome == "No") {
             self.showFullScreen = true
         } else {
-             
+            
         }
     }
     

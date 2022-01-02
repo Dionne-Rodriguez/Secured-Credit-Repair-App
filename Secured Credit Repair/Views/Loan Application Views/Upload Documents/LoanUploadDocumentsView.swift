@@ -10,21 +10,6 @@ import SwiftUINavigationBarColor
 
 struct LoanUploadDocumentsView: View {
     @ObservedObject var loanApplicationService: LoanApplicationService
-    @State var W2FileName: String = ""
-    @State var frontDLFileName: String = ""
-    @State var backDLFileName: String = ""
-    @State var frontSCFileName: String = ""
-    @State var backSCFileName: String = ""
-    @State var voidCheckFileName: String = ""
-    @State var utilityBillFileName: String = ""
-    
-    @State var W2ImporterBtn: Bool = false
-    @State var frontDLImporterBtn: Bool = false
-    @State var backDLImporterBtn: Bool = false
-    @State var frontSCImporterBtn: Bool = false
-    @State var backSCImporterBtn: Bool = false
-    @State var voidCheckImporterBtn: Bool = false
-    @State var utilityBillImporterBtn: Bool = false
     
     var body: some View {
         ScrollView {
@@ -48,7 +33,47 @@ struct LoanUploadDocumentsView: View {
                 .background(Color(red: 68 / 255, green: 159 / 255, blue: 100 / 255))
                 .ignoresSafeArea(.container, edges: .top)
                 
-                NavigationLink(destination: LoanUploadIdentityDocuments()) {
+                
+                NavigationLink(destination: LoanUploadApplicationForm()) {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 10, style: .continuous)
+                            .fill(Color.white)
+                            .shadow(radius: 5)
+                        HStack {
+                            Image(systemName: "doc.plaintext")
+                                .font(.system(size: 30))
+                                .padding(.horizontal)
+                                .foregroundColor(.black)
+                            VStack(alignment: .leading){
+                                Text("Application Form")
+                                    .font(.title3)
+                                    .bold()
+                                    .foregroundColor(.black)
+                                    .lineLimit(1)
+                                    .fixedSize()
+                                
+                                
+                                Text("Download an application form...")
+                                    .font(.footnote)
+                                    .foregroundColor(.black)
+                                    .multilineTextAlignment(.leading)
+                            }
+                            .padding(.bottom)
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .padding(.trailing)
+                                .font(.system(size: 15))
+                                .foregroundColor(Color(red: 68 / 255, green: 159 / 255, blue: 100 / 255))
+                        }
+                        .frame(maxWidth:.infinity, alignment: .leading)
+                    }
+                    .frame(height: 120)
+                    .padding(.horizontal, 15)
+                    .padding(.top, 15)
+                }
+                .navigationTitle("back")
+                
+                NavigationLink(destination: LoanUploadIdentityDocuments(loanApplicationService: loanApplicationService)) {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10, style: .continuous)
                             .fill(Color.white)
@@ -86,7 +111,7 @@ struct LoanUploadDocumentsView: View {
                     .padding(.vertical, 15)
                 }
                 .navigationTitle("back")
-                NavigationLink(destination: LoanUploadAddressDocuments()) {
+                NavigationLink(destination: LoanUploadAddressDocuments(loanApplicationService: loanApplicationService)) {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10, style: .continuous)
                             .fill(Color.white)
@@ -123,7 +148,7 @@ struct LoanUploadDocumentsView: View {
                     .padding(.vertical, 5)
                 }
                 
-                NavigationLink(destination: LoanUploadIncomeDocuments()) {
+                NavigationLink(destination: LoanUploadIncomeDocuments(loanApplicationService: loanApplicationService)) {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10, style: .continuous)
                             .fill(Color.white)
