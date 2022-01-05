@@ -10,11 +10,12 @@ import SwiftUI
 import UniformTypeIdentifiers
 
 struct LoanDocuments {
-    var DriverLisence: [URL]
-    var SocialSecurityCard: [URL]
-    var UtilityBill: [URL]
-    var W2: [URL]
-    var PayStubs: [URL]
+    var DriverLisence: [String]
+    var SocialSecurityCard: [String]
+    var UtilityBill: [String]
+    var W2: [String]
+    var PayStubs: [String]
+    var BankStatements: [String]
     
 }
 
@@ -24,4 +25,5 @@ enum Document {
     case UtilityBill
     case W2
     case PayStubs
+    case BankStatements
 }

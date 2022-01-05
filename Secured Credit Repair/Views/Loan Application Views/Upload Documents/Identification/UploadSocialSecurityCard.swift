@@ -90,7 +90,6 @@ struct UploadSocialSecurityCard: View {
     
         var destinationView: some View {
             if(loanApplicationService.loanApplicationForm.Documents.SocialSecurityCard.count >= 2) {
-                loanApplicationService.socialSecurityCardStepCompletedIcon = "checkmark"
                 return AnyView(LoanUploadIdentityDocuments(loanApplicationService: loanApplicationService))
             }
             else {

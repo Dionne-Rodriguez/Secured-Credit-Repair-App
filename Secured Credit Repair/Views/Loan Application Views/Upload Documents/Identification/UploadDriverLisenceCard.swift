@@ -91,7 +91,7 @@ struct UploadDriverLisenceCardView: View {
     
     var destinationView: some View {
         if(loanApplicationService.loanApplicationForm.Documents.DriverLisence.count >= 2) {
-            loanApplicationService.driverLicenseStepCompletedIcon = "checkmark"
+          
             return AnyView(LoanUploadIdentityDocuments(loanApplicationService: loanApplicationService))
         }
         else {

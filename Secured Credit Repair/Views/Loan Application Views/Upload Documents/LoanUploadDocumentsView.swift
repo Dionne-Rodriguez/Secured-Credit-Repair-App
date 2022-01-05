@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftUINavigationBarColor
 
 struct LoanUploadDocumentsView: View {
+    @State var submissionComplete: Bool = false
     @ObservedObject var loanApplicationService: LoanApplicationService
     
     var body: some View {
@@ -34,7 +35,7 @@ struct LoanUploadDocumentsView: View {
                 .ignoresSafeArea(.container, edges: .top)
                 
                 
-                NavigationLink(destination: LoanUploadApplicationForm()) {
+                NavigationLink(destination: LoanUploadApplicationForm(loanApplicationService: loanApplicationService)) {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10, style: .continuous)
                             .fill(Color.white)
@@ -185,15 +186,49 @@ struct LoanUploadDocumentsView: View {
                     .padding(.horizontal, 15)
                     .padding(.top, 15)
                 }
+                Button(action:{loanApplicationService.submitApplication()}) {
+                    NavigationLink(destination: LoanApplicationComplete(), isActive: $submissionComplete) {EmptyView()}
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 10, style: .continuous)
+                            .fill(Color(red: 68 / 255, green: 159 / 255, blue: 100 / 255))
+                            Text("Submit Application")
+                            .font(.system(size: 21))
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .foregroundColor(.white)
+                            .frame(maxWidth:.infinity, alignment: .center)
+                    }
+                    .frame(height: loanApplicationService.showSubmitApplicationBtn ? 70 : 0)
+                    .padding(.horizontal, 15)
+                    .padding(.vertical, loanApplicationService.showSubmitApplicationBtn ? 15 : 0)
+                
+                }
             }
         }
         .navigationBarBackground {
             Color(red: 68 / 255, green: 159 / 255, blue: 100 / 255).shadow(radius: 1) // don't forget the shadow under the opaque navigation bar
         }
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action:{print("back button hit")}) {
+                    NavigationLink(destination: LoanPersonalQuestionsView(loanApplicationService: loanApplicationService)) {
+                        HStack {
+                            Image(systemName: "chevron.backward")
+                                .font(Font.system(size: 18, weight: .regular))
+                            Text("Back")
+                        }
+                    }
+                }
+            }
+        }
+     
     }
     func onCompletion() {
         print("completed")
     }
+    
+    
 }
 
 struct LoanUploadDocumentsView_Previews: PreviewProvider {

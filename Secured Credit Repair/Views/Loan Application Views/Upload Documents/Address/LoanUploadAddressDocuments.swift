@@ -59,6 +59,20 @@ struct LoanUploadAddressDocuments: View {
         }
         .padding(.top)
         .frame(maxWidth:.infinity, alignment: .leading)
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action:{print("back button hit")}) {
+                    NavigationLink(destination: LoanUploadDocumentsView(loanApplicationService: loanApplicationService)) {
+                        HStack {
+                            Image(systemName: "chevron.backward")
+                                .font(Font.system(size: 18, weight: .regular))
+                            Text("Back")
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 

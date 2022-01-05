@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LoanUploadApplicationForm: View {
+    @ObservedObject var loanApplicationService: LoanApplicationService
     var body: some View {
         VStack(alignment: .center) {
             Image(systemName: "icloud.and.arrow.down")
@@ -55,12 +56,26 @@ struct LoanUploadApplicationForm: View {
         }
         .padding(.top)
         .frame(maxWidth:.infinity, alignment: .leading)
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action:{print("back button hit")}) {
+                    NavigationLink(destination: LoanUploadDocumentsView(loanApplicationService: loanApplicationService)) {
+                        HStack {
+                            Image(systemName: "chevron.backward")
+                                .font(Font.system(size: 18, weight: .regular))
+                            Text("Back")
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
 struct LoanUploadApplicationForm_Previews: PreviewProvider {
     static var previews: some View {
-        LoanUploadApplicationForm()
+        LoanUploadApplicationForm(loanApplicationService: LoanApplicationService())
     }
 }
 

@@ -1,16 +1,13 @@
 //
-//  ContentView.swift
-//  Multiple Image Picker
+//  UploadBankStatements.swift
+//  Secured Credit Repair
 //
-//  Created by Kavsoft on 27/04/20.
-//  Copyright © 2020 Kavsoft. All rights reserved.
+//  Created by Dionne Rodriguez on 1/2/22.
 //
-
-// Code is Updated For Memory Issue...
 
 import SwiftUI
 
-struct UploadPayStubs : View {
+struct UploadBankStatements : View {
     @ObservedObject var loanApplicationService: LoanApplicationService
     @State var selected : [SelectedImages] = []
     @State var show = false
@@ -23,12 +20,12 @@ struct UploadPayStubs : View {
             
             VStack{
                 Spacer()
-                Text("Pay Stubs")
+                Text("Bank Statements")
                     .bold()
                     .font(.title3)
                     .padding()
                 
-                Text("Select one month worth of paystubs")
+                Text("Select three month's worth of bank statements")
                     .foregroundColor(.gray)
                     .multilineTextAlignment(.center)
                 
@@ -67,6 +64,7 @@ struct UploadPayStubs : View {
                 .background(Color(red: 68 / 255, green: 159 / 255, blue: 100 / 255))
                 .clipShape(Capsule())
                 .padding(.top, 25)
+                Spacer()
                 Button(action:{ submitImages() }) {
                     NavigationLink(destination: LoanUploadIncomeDocuments(loanApplicationService: loanApplicationService), isActive: $continueBtnActive) {EmptyView()}
                     ZStack {
@@ -83,33 +81,6 @@ struct UploadPayStubs : View {
                     .padding(.horizontal, 15)
                     .padding(.vertical, 15)
                 }
-              
-
-
-                Spacer()
-//                Button(action:{ print("tap tap..tap tap tsp tsp")}) {
-//                    NavigationLink(destination: LoanUploadIncomeDocuments(loanApplicationService: loanApplicationService), isActive: $continueBtnActive)
-//                    {
-//                        ZStack {
-//                            RoundedRectangle(cornerRadius: 10, style: .continuous)
-//                                .fill(Color(red: 68 / 255, green: 159 / 255, blue: 100 / 255))
-//                            Text("Continue")
-//                                .font(.system(size: 21))
-//                                .frame(maxWidth: .infinity)
-//                                .padding()
-//                                .foregroundColor(.white)
-//                                .frame(maxWidth:.infinity, alignment: .center)
-//                        }
-//                        .frame(height: 70)
-//                        .padding(.horizontal, 15)
-//                        .padding(.vertical, 15)
-//                    }
-//                    .onTapGesture {
-//                        print("tap tap..tap tap tsp tsp")
-//                    }
-//
-//                }
-              
             }
             
             if self.show {
@@ -126,18 +97,18 @@ struct UploadPayStubs : View {
             for i in selected {
                 iteration += 1
                 data = i.image.jpegData(compressionQuality: 0.8)! as NSData
-                loanApplicationService.uploadImage(image: data as Data, fileName: Document.PayStubs, side: String(iteration))
+                loanApplicationService.uploadImage(image: data as Data, fileName: Document.BankStatements, side: String(iteration))
                 continueBtnActive = true
             }
         }
-    }
-}
+    }}
 
 
 
-struct UploadPayStubs_Previews: PreviewProvider {
+struct UploadBankStatements_Previews: PreviewProvider {
     static var previews: some View {
-        UploadPayStubs(loanApplicationService: LoanApplicationService())
+        UploadBankStatements(loanApplicationService: LoanApplicationService())
     }
 }
+
 

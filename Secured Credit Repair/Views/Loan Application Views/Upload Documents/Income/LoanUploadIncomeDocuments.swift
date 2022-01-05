@@ -73,7 +73,7 @@ struct LoanUploadIncomeDocuments: View {
                                     .padding(.leading)
                             }
                             Spacer()
-                            Image(systemName: (loanApplicationService.UtilityBillStepCompletedIcon != nil) ? loanApplicationService.UtilityBillStepCompletedIcon!: "chevron.right")
+                            Image(systemName: (loanApplicationService.PayStubStepCompletedIcon != nil) ? loanApplicationService.PayStubStepCompletedIcon!: "chevron.right")
                                 .padding(.trailing)
                                 .font(.system(size: 15))
                                 .foregroundColor(Color(red: 68 / 255, green: 159 / 255, blue: 100 / 255))
@@ -83,7 +83,7 @@ struct LoanUploadIncomeDocuments: View {
                     .frame(height: 60)
                 }
             Divider()
-                NavigationLink(destination: UploadAddressUtilityBill(loanApplicationService: loanApplicationService)) {
+                NavigationLink(destination: UploadBankStatements(loanApplicationService: loanApplicationService)) {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10, style: .continuous)
                             .fill(Color.white)
@@ -97,7 +97,7 @@ struct LoanUploadIncomeDocuments: View {
                                     .padding(.leading)
                             }
                             Spacer()
-                            Image(systemName: (loanApplicationService.UtilityBillStepCompletedIcon != nil) ? loanApplicationService.W2StepCompletedIcon!: "chevron.right")
+                            Image(systemName: (loanApplicationService.BankStatementsCompletedIcon != nil) ? loanApplicationService.BankStatementsCompletedIcon!: "chevron.right")
                                 .padding(.trailing)
                                 .font(.system(size: 15))
                                 .foregroundColor(Color(red: 68 / 255, green: 159 / 255, blue: 100 / 255))
@@ -111,6 +111,20 @@ struct LoanUploadIncomeDocuments: View {
         }
         .padding(.top)
         .frame(maxWidth:.infinity, alignment: .leading)
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action:{print("back button hit")}) {
+                    NavigationLink(destination: LoanUploadDocumentsView(loanApplicationService: loanApplicationService)) {
+                        HStack {
+                            Image(systemName: "chevron.backward")
+                                .font(Font.system(size: 18, weight: .regular))
+                            Text("Back")
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 

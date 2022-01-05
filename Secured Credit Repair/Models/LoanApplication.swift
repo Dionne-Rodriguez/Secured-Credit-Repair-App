@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct LoanApplication {
+struct LoanApplication: Identifiable {
+    var id: String
     var requestLoanAmount: String
     var firstName: String
     var lastName: String

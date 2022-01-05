@@ -30,32 +30,32 @@ struct LoanUploadIdentityDocuments: View {
                 .foregroundColor(.black)
                 .padding(.leading)
                 .multilineTextAlignment(.leading)
-        
+            
             VStack(alignment: .leading) {
                 Divider()
-                    NavigationLink(destination: UploadDriverLisenceCardView(loanApplicationService: loanApplicationService, systemName: "camera", fileName: Document.DriverLisence, viewTitle: "Front card", side: "front side")) {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 10, style: .continuous)
-                                .fill(Color.white)
-                            HStack {
-                                VStack {
-                                    Text("Driver's License")
-                                        .font(.title3)
-                                        .bold()
-                                        .foregroundColor(.black)
-                                        .fixedSize()
-                                        .padding(.leading)
-                                }
-                                Spacer()
-                                Image(systemName: (loanApplicationService.driverLicenseStepCompletedIcon != nil) ? loanApplicationService.driverLicenseStepCompletedIcon!: "chevron.right")
-                                    .padding(.trailing)
-                                    .font(.system(size: 15))
-                                    .foregroundColor(Color(red: 68 / 255, green: 159 / 255, blue: 100 / 255))
+                NavigationLink(destination: UploadDriverLisenceCardView(loanApplicationService: loanApplicationService, systemName: "camera", fileName: Document.DriverLisence, viewTitle: "Front card", side: "front side")) {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 10, style: .continuous)
+                            .fill(Color.white)
+                        HStack {
+                            VStack {
+                                Text("Driver's License")
+                                    .font(.title3)
+                                    .bold()
+                                    .foregroundColor(.black)
+                                    .fixedSize()
+                                    .padding(.leading)
                             }
-                            .frame(maxWidth:.infinity, alignment: .leading)
+                            Spacer()
+                            Image(systemName: (loanApplicationService.DriverLicenseStepCompletedIcon != nil) ? loanApplicationService.DriverLicenseStepCompletedIcon!: "chevron.right")
+                                .padding(.trailing)
+                                .font(.system(size: 15))
+                                .foregroundColor(Color(red: 68 / 255, green: 159 / 255, blue: 100 / 255))
                         }
-                        .frame(height: 60)
+                        .frame(maxWidth:.infinity, alignment: .leading)
                     }
+                    .frame(height: 60)
+                }
                 Divider()
                 NavigationLink(destination: UploadSocialSecurityCard(loanApplicationService: loanApplicationService, systemName: "camera", fileName: Document.SocialSecurityCard, viewTitle: "Front card",  side: "front side")) {
                     ZStack {
@@ -71,7 +71,7 @@ struct LoanUploadIdentityDocuments: View {
                                     .padding(.leading)
                             }
                             Spacer()
-                            Image(systemName: (loanApplicationService.socialSecurityCardStepCompletedIcon != nil) ? loanApplicationService.socialSecurityCardStepCompletedIcon!: "chevron.right")
+                            Image(systemName: (loanApplicationService.SocialSecurityCardStepCompletedIcon != nil) ? loanApplicationService.SocialSecurityCardStepCompletedIcon!: "chevron.right")
                                 .padding(.trailing)
                                 .font(.system(size: 15))
                                 .foregroundColor(Color(red: 68 / 255, green: 159 / 255, blue: 100 / 255))
@@ -85,7 +85,22 @@ struct LoanUploadIdentityDocuments: View {
         }
         .padding(.top)
         .frame(maxWidth:.infinity, alignment: .leading)
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action:{print("back button hit")}) {
+                    NavigationLink(destination: LoanUploadDocumentsView(loanApplicationService: loanApplicationService)) {
+                        HStack {
+                            Image(systemName: "chevron.backward")
+                                .font(Font.system(size: 18, weight: .regular))
+                            Text("Back")
+                        }
+                    }
+                }
+            }
+        }
     }
+    
 }
 
 struct UploadIdentityDocuments_Previews: PreviewProvider {
