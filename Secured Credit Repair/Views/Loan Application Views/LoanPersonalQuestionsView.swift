@@ -56,7 +56,7 @@ struct LoanPersonalQuestionsView: View {
                    
                     
                     HStack {
-                        Text("Is your annual income more than $30,000?")
+                        Text("Is your annual income more than $27,000?")
                         
                         Spacer()
                         
@@ -86,6 +86,12 @@ struct LoanPersonalQuestionsView: View {
                         }
                         .pickerStyle(SegmentedPickerStyle())
                         .frame(width: 120, height: 0)
+                        .onReceive([self.$loanApplicationService.loanApplicationForm.Inquiries].publisher) { value in
+                            self.presentIneligibleSheet()
+                         }
+                        .fullScreenCover(isPresented: $showFullScreen, content:{
+                            InEligibleLoanApplication()
+                        })
                     }
                     .padding(.vertical)
                     
@@ -115,6 +121,12 @@ struct LoanPersonalQuestionsView: View {
                         }
                         .pickerStyle(SegmentedPickerStyle())
                         .frame(width: 120, height: 0)
+                        .onReceive([self.$loanApplicationService.loanApplicationForm.Bankruptcy].publisher) { value in
+                            self.presentIneligibleSheet()
+                         }
+                        .fullScreenCover(isPresented: $showFullScreen, content:{
+                            InEligibleLoanApplication()
+                        })
                     }
                     .padding(.vertical)
                     
@@ -131,24 +143,15 @@ struct LoanPersonalQuestionsView: View {
                         }
                         .pickerStyle(SegmentedPickerStyle())
                         .frame(width: 120, height: 0)
+                        .onReceive([self.$loanApplicationService.loanApplicationForm.DerogatoryReport].publisher) { value in
+                            self.presentIneligibleSheet()
+                         }
+                        .fullScreenCover(isPresented: $showFullScreen, content:{
+                            InEligibleLoanApplication()
+                        })
                          
                     }
                     .padding(.vertical)
-                    
-                    HStack {
-                        Text("Do you have at least 50% left on vour current credit card balances?")
-                        
-                        Spacer()
-                        
-                        Picker("", selection: $loanApplicationService.loanApplicationForm.CreditCardBalance ) {
-                            Text("Yes").tag("Yes")
-                            Text("No").tag("No")
-                        }
-                        .pickerStyle(SegmentedPickerStyle())
-                        .frame(width: 120, height: 0)
-                    }
-                    .padding(.vertical)
-                    
                 }
                 
                 
@@ -165,7 +168,7 @@ struct LoanPersonalQuestionsView: View {
         }
     }
     func presentIneligibleSheet() {
-        if(loanApplicationService.loanApplicationForm.USCitizen == "No" || loanApplicationService.loanApplicationForm.AnnualIncome == "No") {
+        if(loanApplicationService.loanApplicationForm.USCitizen == "No" || loanApplicationService.loanApplicationForm.AnnualIncome == "No" || loanApplicationService.loanApplicationForm.CreditScore == "No" || loanApplicationService.loanApplicationForm.Inquiries == "No" || loanApplicationService.loanApplicationForm.Bankruptcy == "Yes" || loanApplicationService.loanApplicationForm.DerogatoryReport == "Yes") {
             self.showFullScreen = true
         } else {
             

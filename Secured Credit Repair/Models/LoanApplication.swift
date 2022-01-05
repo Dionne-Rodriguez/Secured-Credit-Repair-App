@@ -13,7 +13,6 @@ struct LoanApplication: Identifiable {
     var firstName: String
     var lastName: String
     var phoneNumber: String
-    var SSN: String
     var DOB: Date
     
     var USCitizen: String
@@ -29,8 +28,6 @@ struct LoanApplication: Identifiable {
     var Bankruptcy: String
     
     var DerogatoryReport: String
-    
-    var CreditCardBalance: String
     
     var Documents: LoanDocuments
 }

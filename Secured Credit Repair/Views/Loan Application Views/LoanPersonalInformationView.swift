@@ -29,8 +29,6 @@ struct LoanPersonalInformationView: View {
                         displayedComponents: [.date]
                     )
                         .padding(.vertical)
-                    TextField("Social Security Number", text: $loanApplicationService.loanApplicationForm.SSN)
-                        .padding(.vertical)
                     iPhoneNumberField(text: $loanApplicationService.loanApplicationForm.phoneNumber)
                         .padding(.vertical)
                 }

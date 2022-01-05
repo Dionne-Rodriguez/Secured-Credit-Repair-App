@@ -15,33 +15,30 @@ import Firebase
 
 final class LoanApplicationService: ObservableObject {
     
-    @Published var loanApplicationForm: LoanApplication = LoanApplication( id: UUID().uuidString, requestLoanAmount:"$0.00", firstName: "", lastName: "", phoneNumber: "", SSN: "", DOB: Date(),USCitizen: "", CreditScore: "", AnnualIncome: "", Inquiries: "",
-                                                                           NewCreditLines: "",Bankruptcy: "",
-                                                                           DerogatoryReport: "",
-                                                                           CreditCardBalance:"", Documents: LoanDocuments(DriverLisence: [], SocialSecurityCard: [], UtilityBill: [], W2: [], PayStubs: [], BankStatements: []))
+    @Published var loanApplicationForm: LoanApplication = LoanApplication( id: UUID().uuidString, requestLoanAmount:"$0.00", firstName: "", lastName: "", phoneNumber: "", DOB: Date(),USCitizen: "", CreditScore: "", AnnualIncome: "", Inquiries: "",
+      NewCreditLines: "",Bankruptcy: "", DerogatoryReport: "", Documents: LoanDocuments(DriverLisence: [], SocialSecurityCard: [], UtilityBill: [], W2: [], PayStubs: [], BankStatements: []))
     
     func submitApplication() {
      print(" Submit app data \(loanApplicationForm)")
         let db = Firestore.firestore()
-        db.collection("Application").addDocument(data: ["Request Loan Amount": loanApplicationForm.requestLoanAmount,
-                                                        "First Name": loanApplicationForm.firstName,
-                                                        "Last Name": loanApplicationForm.lastName,
-                                                        "Phone Number": loanApplicationForm.phoneNumber,
-                                                        "Social Security Number": loanApplicationForm.SSN,
-                                                        "Date of Birth": loanApplicationForm.DOB,
-                                                        "US Citizen": loanApplicationForm.USCitizen,
-                                                        "Credit Score": loanApplicationForm.CreditScore,
-                                                        "Annual Income": loanApplicationForm.AnnualIncome,
-                                                        "Inquiries": loanApplicationForm.Inquiries,
-                                                        "New Credit Lines Open": loanApplicationForm.NewCreditLines,
-                                                        "Derogatory Reports": loanApplicationForm.DerogatoryReport,
-                                                        "Credit Card Balance": loanApplicationForm.CreditScore,
-                                                        "Driver Lisence Documents": loanApplicationForm.Documents.DriverLisence,
-                                                        "Social Security Card Documents": loanApplicationForm.Documents.SocialSecurityCard,
-                                                        "Utility Bill Documents": loanApplicationForm.Documents.UtilityBill,
-                                                        "W2 Documents": loanApplicationForm.Documents.W2,
-                                                        "Paystub Documents": loanApplicationForm.Documents.PayStubs,
-                                                        "Bank Statements Documents": loanApplicationForm.Documents.BankStatements])
+        db.collection("Application").addDocument(data: ["requestLoanAmount": loanApplicationForm.requestLoanAmount,
+                                                        "firstName": loanApplicationForm.firstName,
+                                                        "lastName": loanApplicationForm.lastName,
+                                                        "phoneNumber": loanApplicationForm.phoneNumber,
+                                                        "DOB": loanApplicationForm.DOB,
+                                                        "isUSCitizen": loanApplicationForm.USCitizen,
+                                                        "creditLineOpeninLast6Months": loanApplicationForm.NewCreditLines,
+                                                        "creditScoreAbove620": loanApplicationForm.CreditScore,
+                                                        "incomeEligibe":loanApplicationForm.AnnualIncome,
+                                                        "hasDeragatoryReports": loanApplicationForm.DerogatoryReport,
+                                                        "hasInquiries": loanApplicationForm.Inquiries,
+                                                        "bankruptcy": loanApplicationForm.Bankruptcy,
+                                                        "driverLisenceDocuments": loanApplicationForm.Documents.DriverLisence,
+                                                        "socialSecurityCardDocuments": loanApplicationForm.Documents.SocialSecurityCard,
+                                                        "utilityBillDocuments": loanApplicationForm.Documents.UtilityBill,
+                                                        "W2Documents": loanApplicationForm.Documents.W2,
+                                                        "paystubDocuments": loanApplicationForm.Documents.PayStubs,
+                                                        "bankStatementsDocuments": loanApplicationForm.Documents.BankStatements])
         { err in
             if err == nil {
                 print("Document added")
@@ -68,7 +65,7 @@ final class LoanApplicationService: ObservableObject {
     }
     
     var disablePersonalInformationNextBtn:Bool {
-        return loanApplicationForm.firstName.isEmpty || loanApplicationForm.lastName.isEmpty || loanApplicationForm.SSN.isEmpty || loanApplicationForm.phoneNumber.isEmpty
+        return loanApplicationForm.firstName.isEmpty || loanApplicationForm.lastName.isEmpty || loanApplicationForm.phoneNumber.isEmpty
     }
     
     func uploadFile(file:URL,fileName:String) {
@@ -120,7 +117,7 @@ final class LoanApplicationService: ObservableObject {
         }
         if(fileName == Document.BankStatements) {
             BankStatementsCompletedIcon = "checkmark"
-            self.loanApplicationForm.Documents.BankStatements.append(url.absoluteString)   
+            self.loanApplicationForm.Documents.BankStatements.append(url.absoluteString)
         }
         
     }
