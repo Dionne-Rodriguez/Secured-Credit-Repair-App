@@ -12,12 +12,11 @@ struct LoanUploadIdentityDocuments: View {
     
     
     var body: some View {
-        VStack(alignment: .leading) {
+         VStack(alignment: .leading) {
             Image("ID-Card")
                 .padding(.top)
                 .padding(.leading)
                 .frame(width: 300, height: 200)
-            
             
             Text("Proof of identity")
                 .bold()
@@ -33,7 +32,7 @@ struct LoanUploadIdentityDocuments: View {
             
             VStack(alignment: .leading) {
                 Divider()
-                NavigationLink(destination: UploadDriverLisenceCardView(loanApplicationService: loanApplicationService, systemName: "camera", fileName: Document.DriverLisence, viewTitle: "Front card", side: "front side")) {
+                NavigationLink(destination: UploadDriverLicenseCardView(loanApplicationService: loanApplicationService, systemName: "camera", fileName: Document.DriverLicense, viewTitle: "Front card", side: "front side")) {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10, style: .continuous)
                             .fill(Color.white)
@@ -83,6 +82,7 @@ struct LoanUploadIdentityDocuments: View {
                 Divider()
             }
         }
+         .onAppear(perform: reset)
         .padding(.top)
         .frame(maxWidth:.infinity, alignment: .leading)
         .navigationBarBackButtonHidden(true)
@@ -100,6 +100,9 @@ struct LoanUploadIdentityDocuments: View {
             }
         }
     }
+    func reset() {
+            loanApplicationService.uploadComplete = false
+                }
     
 }
 

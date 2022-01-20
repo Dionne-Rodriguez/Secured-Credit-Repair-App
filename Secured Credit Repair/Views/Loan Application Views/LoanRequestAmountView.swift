@@ -22,38 +22,49 @@ struct LoanRequestAmountView: View {
     
     var body: some View {
         VStack {
-            Text("Loan Application")
-                .font(.title)
-                .padding(.horizontal)
-            
-            Spacer()
-            
-            Text("How much would you like to borrow?")
-                .font(.title2)
-                .padding(.horizontal)
-            
-            Slider(
-                value: $speed,
-                in: 1000...50000,
-                step: 500,
-                onEditingChanged: { editing in
-                    isEditing = editing
-                    loanApplicationService.loanApplicationForm.requestLoanAmount = totalLoanAmount
-                }
-            )
-                .padding(.horizontal)
-            
-            Text(totalLoanAmount)
-            
-            NavigationLink(destination: LoanPersonalInformationView(loanApplicationService: loanApplicationService)) {
-                Text("Next")
+            VStack {
+                Spacer()
+                Text("How much would you like to borrow?")
+                    .font(.title)
+                    .padding()
+                Spacer()
             }
-            .buttonStyle(.borderedProminent)
-            .frame(width: 350, alignment: .trailing)
-            .disabled(loanApplicationService.disableLoanAmountBtn)
-            Spacer()
+            .frame(maxWidth: .infinity)
+            .background(Color(red: 68 / 255, green: 159 / 255, blue: 100 / 255))
+            .ignoresSafeArea(.container, edges: .top)
+            
+            VStack {
+                Slider(
+                    value: $speed,
+                    in: 1000...50000,
+                    step: 500,
+                    onEditingChanged: { editing in
+                        isEditing = editing
+                        loanApplicationService.loanApplicationForm.requestLoanAmount = totalLoanAmount
+                    }
+                )
+                    .padding()
+                
+                Text(totalLoanAmount)
+                    .padding()
+                    .font(.largeTitle)
+                
+                Spacer()
+               
+                
+                NavigationLink(destination: LoanPersonalInformationView(loanApplicationService: loanApplicationService)) {
+                    Text("Next")
+                }
+                .buttonStyle(.borderedProminent)
+                .frame(width: 350, alignment: .trailing)
+                .disabled(loanApplicationService.disableLoanAmountBtn)
+                
+                Spacer()
+            }
         }
+        
     }
+    
 }
 
 struct LoanRequestAmountView_Previews: PreviewProvider {

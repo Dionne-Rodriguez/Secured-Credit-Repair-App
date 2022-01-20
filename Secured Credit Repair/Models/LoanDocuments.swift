@@ -10,7 +10,7 @@ import SwiftUI
 import UniformTypeIdentifiers
 
 struct LoanDocuments {
-    var DriverLisence: [String]
+    var DriverLicense: [String]
     var SocialSecurityCard: [String]
     var UtilityBill: [String]
     var W2: [String]
@@ -20,7 +20,7 @@ struct LoanDocuments {
 }
 
 enum Document {
-    case DriverLisence
+    case DriverLicense
     case SocialSecurityCard
     case UtilityBill
     case W2

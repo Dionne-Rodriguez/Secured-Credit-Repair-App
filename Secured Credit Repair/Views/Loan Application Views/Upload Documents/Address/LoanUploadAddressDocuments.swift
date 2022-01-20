@@ -57,6 +57,7 @@ struct LoanUploadAddressDocuments: View {
                 Divider()
             }
         }
+        .onAppear(perform: reset)
         .padding(.top)
         .frame(maxWidth:.infinity, alignment: .leading)
         .navigationBarBackButtonHidden(true)
@@ -73,6 +74,10 @@ struct LoanUploadAddressDocuments: View {
                 }
             }
         }
+    }
+    
+    func reset() {
+        loanApplicationService.uploadComplete = false
     }
 }
 
