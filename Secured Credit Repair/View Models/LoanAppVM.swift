@@ -1,11 +1,3 @@
-
-//
-//  LoanApplicationManager.swift
-//  Secured Credit Repair
-//
-//  Created by Dionne Rodriguez on 11/30/21.
-//
-
 import Foundation
 import FirebaseStorage
 
@@ -15,8 +7,8 @@ import Firebase
 
 final class LoanApplicationService: ObservableObject {
     
-    @Published var loanApplicationForm: LoanApplication = LoanApplication( id: UUID().uuidString, requestLoanAmount:"$0.00", firstName: "", lastName: "", phoneNumber: "", DOB: Date(), USCitizen: "", CreditScore: "", AnnualIncome: "", Inquiries: "",
-      NewCreditLines: "" ,Bankruptcy: "", DerogatoryReport: "", Documents: LoanDocuments(DriverLicense: [], SocialSecurityCard: [], UtilityBill: [], W2: [], PayStubs: [], BankStatements: []))
+    @Published var loanApplicationForm: LoanApplication = LoanApplication( id: UUID().uuidString, requestLoanAmount:"$0.00", firstName: "", lastName: "", email: "", phoneNumber: "", DOB: Date(), USCitizen: "", CreditScore: "", AnnualIncome: "", Inquiries: "",
+                                                                           NewCreditLines: "" ,Bankruptcy: "", DerogatoryReport: "", Documents: LoanDocuments(DriverLicense: [], SocialSecurityCard: [], UtilityBill: [], W2: [], PayStubs: [], BankStatements: []))
     
     var DriverLicenseStepCompletedIcon: String?
     var SocialSecurityCardStepCompletedIcon: String?
@@ -30,9 +22,15 @@ final class LoanApplicationService: ObservableObject {
     @Published var hideProgressBar: Bool = true
     @Published var uploadComplete: Bool = false
     @Published var uploadAmount:Double = 0.0000
+    @Published var totalProgress: Progress = Progress(totalUnitCount: Int64(100))
     var selection: Int?
     
-
+   @Published var applicationComplete: Bool = false
+    
+    
+    
+    
+    
     
     var showSubmitApplicationBtn:Bool {
         return (DriverLicenseStepCompletedIcon != nil) && (SocialSecurityCardStepCompletedIcon != nil) && (UtilityBillStepCompletedIcon != nil) && (W2StepCompletedIcon != nil) && (PayStubStepCompletedIcon != nil) && (BankStatementsCompletedIcon != nil)
@@ -61,18 +59,59 @@ final class LoanApplicationService: ObservableObject {
         }
     }
     
+    func submitImages(selected:[SelectedImages] , fileName:Document) {
+        let imageCount = selected.count
+        
+        if imageCount >= 1 {
+            var data = NSData()
+            var iteration: Int = 0
+            for i in selected {
+                data = i.image.jpegData(compressionQuality: 0.8)! as NSData
+                uploadImages(image: data as Data, fileName: fileName, side: String(iteration), imageUploadSize: imageCount)
+                iteration += 1
+            }
+        }
+    }
+    
+    func uploadImages(image:Data,fileName:Document, side: String = "", imageUploadSize: Int) {
+        
+        self.progressBar = true
+        self.hideProgressBar = false
+        
+        print("Progress bar \(progressBar) hideProgressBar \(hideProgressBar)")
+        
+        let storage = Storage.storage()
+        
+        let uploadTask = storage.reference().child("docs/\(fileName)\(side)").putData(image, metadata: nil) {_ , error in
+            storage.reference().child("docs/\(fileName)\(side)").downloadURL { (url,error) in
+                guard let downloadURL = url else {
+                    return
+                }
+                
+                self.saveDownloadUrl(url: downloadURL, fileName: fileName, imageUploadSize: imageUploadSize)
+            }
+        }
+        uploadTask.observe(.progress) { (snapshot) in
+            if let p = snapshot.progress {
+
+            }
+        }
+    }
+    
+    
+    
     func uploadImage(image:Data,fileName:Document, side: String = "") {
         self.progressBar.toggle()
         self.hideProgressBar.toggle()
         
         let storage = Storage.storage()
-       let uploadTask = storage.reference().child("docs/\(fileName)\(side)").putData(image, metadata: nil) {_ , error in
+        let uploadTask = storage.reference().child("docs/\(fileName)\(side)").putData(image, metadata: nil) {_ , error in
             storage.reference().child("docs/\(fileName)\(side)").downloadURL { (url,error) in
                 guard let downloadURL = url else {
                     return
-                  }
-              
-                self.saveDownloadUrl(url: downloadURL, fileName: fileName)
+                }
+                
+                self.saveDownloadUrl(url: downloadURL, fileName: fileName, imageUploadSize: 0)
             }
         }
         uploadTask.observe(.progress) { snapshot in
@@ -81,15 +120,11 @@ final class LoanApplicationService: ObservableObject {
                 self.hideProgressBar = true
                 self.progressBar = false
                 self.uploadAmount = 0.0000
-                print("progress done")
             }
-            
-            
         }
     }
     
-    func saveDownloadUrl(url: URL, fileName: Document) {
-        
+    func saveDownloadUrl(url: URL, fileName: Document, imageUploadSize: Int?) {
         if(fileName == Document.DriverLicense) {
             self.loanApplicationForm.Documents.DriverLicense.append(url.absoluteString)
             
@@ -103,7 +138,6 @@ final class LoanApplicationService: ObservableObject {
             
         }
         if(fileName == Document.SocialSecurityCard) {
-            
             self.loanApplicationForm.Documents.SocialSecurityCard.append(url.absoluteString)
             
             if(self.loanApplicationForm.Documents.SocialSecurityCard.count >= 2) {
@@ -123,17 +157,44 @@ final class LoanApplicationService: ObservableObject {
             }
         }
         if(fileName == Document.W2) {
-            W2StepCompletedIcon = "checkmark"
+            
             self.loanApplicationForm.Documents.W2.append(url.absoluteString)
+            if(self.loanApplicationForm.Documents.W2.count >= 1) {
+                W2StepCompletedIcon = "checkmark"
+                uploadComplete = true
+            }
         }
         if(fileName == Document.PayStubs) {
-            PayStubStepCompletedIcon = "checkmark"
+            totalProgress.totalUnitCount = Int64(imageUploadSize ?? 0)
             self.loanApplicationForm.Documents.PayStubs.append(url.absoluteString)
-            print(loanApplicationForm.Documents.PayStubs)
+            
+            totalProgress.completedUnitCount = Int64(self.loanApplicationForm.Documents.PayStubs.count)
+            
+            self.uploadAmount = totalProgress.fractionCompleted
+            if(totalProgress.isFinished) {
+                PayStubStepCompletedIcon = "checkmark"
+                uploadComplete = true
+                self.hideProgressBar = true
+                self.progressBar = false
+                self.uploadAmount = 0.0000
+            }
         }
         if(fileName == Document.BankStatements) {
-            BankStatementsCompletedIcon = "checkmark"
+            totalProgress.totalUnitCount = Int64(imageUploadSize ?? 0)
             self.loanApplicationForm.Documents.BankStatements.append(url.absoluteString)
+            
+            totalProgress.completedUnitCount = Int64(self.loanApplicationForm.Documents.BankStatements.count)
+            
+            self.uploadAmount = totalProgress.fractionCompleted
+            
+            if(totalProgress.isFinished) {
+                BankStatementsCompletedIcon = "checkmark"
+                uploadComplete = true
+                self.hideProgressBar = true
+                self.progressBar = false
+                self.uploadAmount = 0.0000
+            }
+            
         }
         
     }
@@ -145,11 +206,11 @@ final class LoanApplicationService: ObservableObject {
     }
     
     func submitApplication() {
-    
         let db = Firestore.firestore()
         db.collection("Application").addDocument(data: ["requestLoanAmount": loanApplicationForm.requestLoanAmount,
                                                         "firstName": loanApplicationForm.firstName,
                                                         "lastName": loanApplicationForm.lastName,
+                                                        "email": loanApplicationForm.email,
                                                         "phoneNumber": loanApplicationForm.phoneNumber,
                                                         "DOB": transformDate(date:loanApplicationForm.DOB),
                                                         "isUSCitizen": loanApplicationForm.USCitizen,
@@ -167,7 +228,7 @@ final class LoanApplicationService: ObservableObject {
                                                         "bankStatementsDocuments": loanApplicationForm.Documents.BankStatements])
         { err in
             if err == nil {
-                print("Document added")
+                self.applicationComplete = true
                 
             } else {
                 print("Error adding document: \(String(describing: err))")
@@ -177,11 +238,10 @@ final class LoanApplicationService: ObservableObject {
     }
     
     
-
+    
     
     init() {
         
     }
     
 }
-

@@ -46,7 +46,7 @@ struct LoanUploadIncomeDocuments: View {
                                         .padding(.leading)
                                 }
                                 Spacer()
-                                Image(systemName: (loanApplicationService.UtilityBillStepCompletedIcon != nil) ? loanApplicationService.UtilityBillStepCompletedIcon!: "chevron.right")
+                                Image(systemName: (loanApplicationService.W2StepCompletedIcon != nil) ? loanApplicationService.W2StepCompletedIcon!: "chevron.right")
                                     .padding(.trailing)
                                     .font(.system(size: 15))
                                     .foregroundColor(Color(red: 68 / 255, green: 159 / 255, blue: 100 / 255))
@@ -108,7 +108,7 @@ struct LoanUploadIncomeDocuments: View {
                 
             }
         }
-//        .onAppear(perform: reset)
+        .onAppear(perform: reset)
         .padding(.top)
         .frame(maxWidth:.infinity, alignment: .leading)
         .navigationBarBackButtonHidden(true)
@@ -126,6 +126,11 @@ struct LoanUploadIncomeDocuments: View {
             }
         }
     }
+    
+    func reset() {
+        loanApplicationService.uploadComplete = false
+    }
+    
 }
 
 struct LoanUploadIncomeDocuments_Previews: PreviewProvider {
@@ -133,52 +138,3 @@ struct LoanUploadIncomeDocuments_Previews: PreviewProvider {
         LoanUploadIncomeDocuments(loanApplicationService: LoanApplicationService())
     }
 }
-
-//
-//NavigationLink(destination: UploadPayStubs(loanApplicationService: loanApplicationService)) {
-//    ZStack {
-//        RoundedRectangle(cornerRadius: 10, style: .continuous)
-//            .fill(Color.white)
-//        HStack {
-//            VStack {
-//                Text("One month worth of paystubs")
-//                    .font(.title3)
-//                    .bold()
-//                    .foregroundColor(.black)
-//                    .fixedSize()
-//                    .padding(.leading)
-//            }
-//            Spacer()
-//            Image(systemName: (loanApplicationService.PayStubStepCompletedIcon != nil) ? loanApplicationService.PayStubStepCompletedIcon!: "chevron.right")
-//                .padding(.trailing)
-//                .font(.system(size: 15))
-//                .foregroundColor(Color(red: 68 / 255, green: 159 / 255, blue: 100 / 255))
-//        }
-//        .frame(maxWidth:.infinity, alignment: .leading)
-//    }
-//    .frame(height: 60)
-//}
-//Divider()
-//NavigationLink(destination: UploadBankStatements(loanApplicationService: loanApplicationService)) {
-//    ZStack {
-//        RoundedRectangle(cornerRadius: 10, style: .continuous)
-//            .fill(Color.white)
-//        HStack {
-//            VStack {
-//                Text("Three month's worth of bank statements")
-//                    .font(.title3)
-//                    .bold()
-//                    .foregroundColor(.black)
-//                    .fixedSize()
-//                    .padding(.leading)
-//            }
-//            Spacer()
-//            Image(systemName: (loanApplicationService.BankStatementsCompletedIcon != nil) ? loanApplicationService.BankStatementsCompletedIcon!: "chevron.right")
-//                .padding(.trailing)
-//                .font(.system(size: 15))
-//                .foregroundColor(Color(red: 68 / 255, green: 159 / 255, blue: 100 / 255))
-//        }
-//        .frame(maxWidth:.infinity, alignment: .leading)
-//    }
-//    .frame(height: 60)
-//}

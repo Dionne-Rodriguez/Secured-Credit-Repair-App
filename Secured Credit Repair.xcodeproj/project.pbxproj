@@ -20,7 +20,6 @@
 		644419FA2752AFB900EA1466 /* AppointmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644419F92752AFB900EA1466 /* AppointmentView.swift */; };
 		64441A012753EFC000EA1466 /* iPhoneNumberField in Frameworks */ = {isa = PBXBuildFile; productRef = 64441A002753EFC000EA1466 /* iPhoneNumberField */; };
 		644C87DD275C1F2200B47FC2 /* LoanDocuments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644C87DC275C1F2200B47FC2 /* LoanDocuments.swift */; };
-		644C87ED275D957700B47FC2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 644C87EC275D957700B47FC2 /* GoogleService-Info.plist */; };
 		644C87F0275D99CA00B47FC2 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 644C87EF275D99CA00B47FC2 /* FirebaseFirestore */; };
 		644C87F2275D99CA00B47FC2 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 644C87F1275D99CA00B47FC2 /* FirebaseStorage */; };
 		644C87F4275D99CA00B47FC2 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 644C87F3275D99CA00B47FC2 /* FirebaseStorageCombine-Community */; };
@@ -45,6 +44,7 @@
 		64CB47942781313600E7557B /* UploadPayStubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CB47932781313600E7557B /* UploadPayStubs.swift */; };
 		64CB47962781538400E7557B /* MultiImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CB47952781538300E7557B /* MultiImagePicker.swift */; };
 		64CB479827821E9100E7557B /* UploadBankStatements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CB479727821E9100E7557B /* UploadBankStatements.swift */; };
+		64F9A23627AAD3CD00833B6A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 64F9A23527AAD3CD00833B6A /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,7 +61,6 @@
 		644419F72752067600EA1466 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		644419F92752AFB900EA1466 /* AppointmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentView.swift; sourceTree = "<group>"; };
 		644C87DC275C1F2200B47FC2 /* LoanDocuments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanDocuments.swift; sourceTree = "<group>"; };
-		644C87EC275D957700B47FC2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		648E64AF27850BDB003C99D4 /* FireStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStore.swift; sourceTree = "<group>"; };
 		6491EA7F2765924900D03351 /* LoanUploadIdentityDocuments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanUploadIdentityDocuments.swift; sourceTree = "<group>"; };
 		6491EA812766FEB900D03351 /* LoanUploadAddressDocuments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanUploadAddressDocuments.swift; sourceTree = "<group>"; };
@@ -81,6 +80,7 @@
 		64CB47932781313600E7557B /* UploadPayStubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPayStubs.swift; sourceTree = "<group>"; };
 		64CB47952781538300E7557B /* MultiImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiImagePicker.swift; sourceTree = "<group>"; };
 		64CB479727821E9100E7557B /* UploadBankStatements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadBankStatements.swift; sourceTree = "<group>"; };
+		64F9A23527AAD3CD00833B6A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,9 +197,9 @@
 		644419E82751F56700EA1466 /* Secured Credit Repair */ = {
 			isa = PBXGroup;
 			children = (
+				64F9A23527AAD3CD00833B6A /* GoogleService-Info.plist */,
 				6403DF7C278B4D9800EF55CD /* Components */,
 				6491EA88276803F600D03351 /* Helpers */,
-				644C87EC275D957700B47FC2 /* GoogleService-Info.plist */,
 				6405C6FF275727C20025CE26 /* Models */,
 				6405C6FE275727AC0025CE26 /* View Models */,
 				6405C6FD275727A00025CE26 /* Views */,
@@ -323,8 +323,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				644419F12751F56800EA1466 /* Preview Assets.xcassets in Resources */,
+				64F9A23627AAD3CD00833B6A /* GoogleService-Info.plist in Resources */,
 				644419EE2751F56800EA1466 /* Assets.xcassets in Resources */,
-				644C87ED275D957700B47FC2 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,7 +421,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -476,7 +476,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -503,6 +503,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -533,6 +534,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

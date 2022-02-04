@@ -12,9 +12,10 @@ struct UploadBankStatements : View {
     @State var selected : [SelectedImages] = []
     @State var show = false
     @State var continueBtnActive = false
+    @State var disableBtn = true
     
     var body: some View{
-        ZStack{
+        ZStack {
             
             Color.black.opacity(0.07).edgesIgnoringSafeArea(.all)
             
@@ -65,8 +66,10 @@ struct UploadBankStatements : View {
                 .clipShape(Capsule())
                 .padding(.top, 25)
                 Spacer()
-                Button(action:{ submitImages() }) {
-                    NavigationLink(destination: LoanUploadIncomeDocuments(loanApplicationService: loanApplicationService), isActive: $continueBtnActive) {EmptyView()}
+                
+                NavigationLink(destination: LoanUploadIncomeDocuments(loanApplicationService: loanApplicationService), isActive: $loanApplicationService.uploadComplete) {EmptyView()}
+                
+                Button(action:{ loanApplicationService.submitImages(selected: selected, fileName: Document.BankStatements) }) {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10, style: .continuous)
                             .fill(Color(red: 68 / 255, green: 159 / 255, blue: 100 / 255))
@@ -80,28 +83,38 @@ struct UploadBankStatements : View {
                     .frame(height: 70)
                     .padding(.horizontal, 15)
                     .padding(.vertical, 15)
-                }
+                }.disabled(disableBtn)
+                    .padding(.top, 20)
             }
+            .onAppear(perform: reset)
+            GeometryReader {_ in
+                Color.clear
+                    .modifier(Popup(isPresented: loanApplicationService.progressBar,
+                                    content: { ProgressBar(uploadProgress: loanApplicationService.uploadAmount) }))
+            }.background(
+                Color.black.opacity(0.65)
+                    .edgesIgnoringSafeArea(.all)
+            )
+                .PayStubsProgressBarViewIsHidden(loanApplicationService.hideProgressBar)
             
             if self.show {
-                CustomPicker(selected: self.$selected, show: self.$show)
+                CustomPicker(selected: self.$selected, show: self.$show).onDisappear(perform: didDismiss)
             }
+
         }
     }
     
-    func submitImages() {
-        if selected.count >= 1 {
-            //            self.disableBtn.toggle()
-            var data = NSData()
-            var iteration: Int = 0
-            for i in selected {
-                iteration += 1
-                data = i.image.jpegData(compressionQuality: 0.8)! as NSData
-                loanApplicationService.uploadImage(image: data as Data, fileName: Document.BankStatements, side: String(iteration))
-                continueBtnActive = true
-            }
+    func didDismiss() {
+        if !self.selected.isEmpty {
+            self.disableBtn = false
         }
-    }}
+    }
+    
+    func reset() {
+        loanApplicationService.uploadComplete = false
+    }
+    
+}
 
 
 

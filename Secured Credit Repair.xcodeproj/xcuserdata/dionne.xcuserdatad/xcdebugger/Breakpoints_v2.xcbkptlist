@@ -135,18 +135,33 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "4A2D48DC-83D8-4966-A5E8-0439E3A3C35A"
+            uuid = "F4B93BCA-603F-4014-A580-2A9430A6ED7A"
             shouldBeEnabled = "No"
-            condition = "self.uploadAmount == 1.00"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Secured Credit Repair/View Models/LoanAppVM.swift"
+            filePath = "Secured Credit Repair/Views/Secured_Credit_RepairApp.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
-            landmarkName = "saveDownloadUrl(url:fileName:)"
-            landmarkType = "7">
+            startingLineNumber = "1"
+            endingLineNumber = "1"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D8278EB4-AA89-440E-BFC8-973741808C8A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Secured Credit Repair/Views/Loan Application Views/Upload Documents/Income/UploadBankStatements.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "body"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

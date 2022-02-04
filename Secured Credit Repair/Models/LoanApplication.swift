@@ -12,6 +12,7 @@ struct LoanApplication: Identifiable {
     var requestLoanAmount: String
     var firstName: String
     var lastName: String
+    var email: String
     var phoneNumber: String
     var DOB: Date
     

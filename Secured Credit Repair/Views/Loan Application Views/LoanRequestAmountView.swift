@@ -27,6 +27,7 @@ struct LoanRequestAmountView: View {
                 Text("How much would you like to borrow?")
                     .font(.title)
                     .padding()
+                    .foregroundColor(.white)
                 Spacer()
             }
             .frame(maxWidth: .infinity)
@@ -36,7 +37,7 @@ struct LoanRequestAmountView: View {
             VStack {
                 Slider(
                     value: $speed,
-                    in: 1000...50000,
+                    in: 1000...450000,
                     step: 500,
                     onEditingChanged: { editing in
                         isEditing = editing
@@ -52,14 +53,27 @@ struct LoanRequestAmountView: View {
                 Spacer()
                
                 
-                NavigationLink(destination: LoanPersonalInformationView(loanApplicationService: loanApplicationService)) {
-                    Text("Next")
-                }
-                .buttonStyle(.borderedProminent)
-                .frame(width: 350, alignment: .trailing)
-                .disabled(loanApplicationService.disableLoanAmountBtn)
                 
-                Spacer()
+                Button(action: {}) {
+                    NavigationLink(destination: LoanPersonalInformationView(loanApplicationService: loanApplicationService)) {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 10, style: .continuous)
+                                .fill(Color(red: 68 / 255, green: 159 / 255, blue: 100 / 255))
+                            Text("Next")
+                                .font(.system(size: 21))
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .foregroundColor(.white)
+                                .frame(maxWidth:.infinity, alignment: .center)
+                        }
+                        .frame(height: 70)
+                        .padding(.horizontal, 15)
+                        .padding(.vertical, 15)
+                    }
+                }
+                .padding(.top, 20)
+                .disabled(loanApplicationService.disableLoanAmountBtn)
+                //
             }
         }
         

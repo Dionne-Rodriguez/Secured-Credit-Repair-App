@@ -99,8 +99,7 @@ struct CustomPicker : View {
                     self.getAllImages()
                     self.disabled = false
                 }
-                else {
-                    
+                else {    
                     print("not authorized")
                     self.disabled = true
                 }

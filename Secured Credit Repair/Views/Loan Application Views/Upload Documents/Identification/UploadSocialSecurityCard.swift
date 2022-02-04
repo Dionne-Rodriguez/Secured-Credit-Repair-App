@@ -37,7 +37,7 @@ struct UploadSocialSecurityCard: View {
                         .font(.title3)
                         .padding()
                     
-                    Text("We need picture of the \(self.side) of your card")
+                    Text("We need a picture of the \(self.side) of your card")
                         .foregroundColor(.gray)
                         .multilineTextAlignment(.center)
                         .padding(.bottom)
@@ -48,16 +48,11 @@ struct UploadSocialSecurityCard: View {
                 }
                 .padding(.bottom, 100)
                 
-                
-                
-                
-                
                 VStack {
                     Spacer()
                     
                     HStack() {
                         if image != nil {
-                            
                             Text("Social-Security-card.jpeg:")
                                 .padding(.leading)
                             Text("selected")

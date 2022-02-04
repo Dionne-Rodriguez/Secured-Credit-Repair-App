@@ -88,7 +88,7 @@ struct LoanUploadIdentityDocuments: View {
         .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
-                Button(action:{print("back button hit")}) {
+                Button(action:{}) {
                     NavigationLink(destination: LoanUploadDocumentsView(loanApplicationService: loanApplicationService)) {
                         HStack {
                             Image(systemName: "chevron.backward")

@@ -11,7 +11,6 @@ import SwiftUI
 
 struct ProgressBar: View {
      var uploadProgress: Double
-    
     var body: some View {
         VStack {
             Text("Uploading...")
@@ -20,10 +19,8 @@ struct ProgressBar: View {
         ProgressView("", value: uploadProgress ,total: 1.00)
         .foregroundColor(.green)
         .accentColor(Color(red: 68 / 255, green: 159 / 255, blue: 100 / 255))
-//        .frame(height: 0)
         .animation(.spring())
         .scaleEffect(x: 1, y: 4, anchor: .center)
-//        .hidden()
         }
         .padding(.horizontal)
     }

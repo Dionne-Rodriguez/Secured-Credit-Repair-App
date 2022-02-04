@@ -39,7 +39,7 @@ struct UploadDriverLicenseCardView: View {
                         .font(.title3)
                         .padding()
                     
-                    Text("We need picture of the \(self.side) of your card")
+                    Text("We need a picture of the \(self.side) of your card")
                         .foregroundColor(.gray)
                         .multilineTextAlignment(.center)
                         .padding(.bottom)
